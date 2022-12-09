@@ -1,18 +1,54 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <map>
-#include "usefull.hh"
+//#include <map>
+//#include "usefull.hh"
 
-class Molecule{
+typedef enum POS {BU, DG, DD, AG, AD} POS;
+
+class Footballeur{
+private :
+    std::string _nom;
+    std::string _nationalite;
+    int _age;
+//  Stat   
+    int _PAC; // VIT
+    int _SHO; // TIR
+    int _PAS; // PASSE
+    int _DRI; // DRIBBLES
+    int _DEF; // DEFENSE
+    int _PHY; // PHYSIQUE
+
+    static int n_footballeur;
+
 public:
-// Constructeurs 
-    Molecule (const string &forme_eclate); 
-// Destructeur
-// Méthodes
-    string normalize() const;
+//  Constructeurs 
+    Footballeur (const FILE &f);
+    Footballeur (const std::string & str); 
+    Footballeur (const Footballeur &f);
+//  Destructeur
+    ~Footballeur();
+//  Méthodes
+    std::string normalize() const;
 
-private:
-    vector<string> vect_forme_eclate;
+
+};
+
+class Attaquant : public Footballeur{
+
+private : 
+    POS _POS; // Position
+    static int n_attaquant;
+public:
+//  Constructeurs
+    Attaquant (const std::string &str);
+    Attaquant (const FILE &f);
+//  Destructeurs
+    ~Attaquant ();
+// Méthodes
+    POS get_POS();
+    std::string toString();
 };
