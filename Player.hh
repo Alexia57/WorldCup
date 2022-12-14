@@ -7,20 +7,26 @@
 //#include <map>
 //#include "usefull.hh"
 
-typedef enum POS {BU, DG, DD, AG, AD} POS;
+typedef enum Pos {BU, DG, DD, AG, AD} Pos;
+typedef enum Pied {Gauche, Droit} Pied;
 
 class Footballeur{
 private :
     std::string _nom;
     std::string _nationalite;
     int _age;
+
 //  Stat   
-    int _PAC; // VIT
+    int _GEN; // Note General
+    int _PAC; // VITESSE
     int _SHO; // TIR
     int _PAS; // PASSE
-    int _DRI; // DRIBBLES
+    int _DRI; // DRIBLES
     int _DEF; // DEFENSE
     int _PHY; // PHYSIQUE
+    Pied _Pied_FOrt;
+    int Gestes_tech;
+    int _Pied_Faible;
 
     static int n_footballeur;
 
@@ -40,7 +46,7 @@ public:
 class Attaquant : public Footballeur{
 
 private : 
-    POS _POS; // Position
+    Pos _POS; // Position
     static int n_attaquant;
 public:
 //  Constructeurs
