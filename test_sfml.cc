@@ -18,7 +18,7 @@ int main()
     if (!texture.loadFromFile("logo_cheval.png", sf::IntRect(0, 0, HEIGHT, HEIGHT))){
         std::cout << "Erreur loading img\n";
     }
-    texture.setSmooth(true);
+    texture.setSmooth(true);__cpp_lib_make_from_tuple
     sprite.setTexture(texture);
     
 
