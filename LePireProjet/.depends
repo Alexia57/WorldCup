@@ -1,0 +1,6 @@
+chat.o: chat.cpp
+chatquiz.o: chatquiz.cpp
+Fenetre.o: Fenetre.cpp Fenetre.hpp
+FenetreMenu.o: FenetreMenu.cpp FenetreMenu.hpp Fenetre.hpp
+FenetreQuiz.o: FenetreQuiz.cpp FenetreQuiz.hpp Fenetre.hpp
+main.o: main.cpp Fenetre.hpp FenetreQuiz.hpp FenetreMenu.hpp
