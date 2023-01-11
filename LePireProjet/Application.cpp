@@ -23,12 +23,8 @@ void Application::run()
 void Application::initialize()
 {
     std::cout << "Initialisation" << std::endl;
-    Page* pagetest = new Page(400, 200, "Tadaaaa");
-    std::cout << "construit" << std::endl;
-    _currentPage = pagetest;
-    std::cout << "reset" << std::endl;
+    _currentPage = new Page(400, 200, "Tadaaaa");
     _currentPage->initialize();
-    std::cout << "initialise2" << std::endl;
 }
 
 // ferme l'app
@@ -36,9 +32,7 @@ void Application::shutdown()
 {
     std::cout << "Shut down" << std::endl;
     _currentPage->close();
-    std::cout << "Shut down en cours" << std::endl;
     delete _currentPage;
-    std::cout << "Shut down fini" << std::endl;
     _currentPage = NULL;
 }
 
