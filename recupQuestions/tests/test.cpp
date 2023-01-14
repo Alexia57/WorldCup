@@ -22,3 +22,14 @@ TEST_CASE("1: Class Question"){
   CHECK(compare_lists(q1.get_propositions(), propositions));
   CHECK(compare_lists(q2.get_propositions(), {"Paris", "Marseille", "Lyon", "Toulouse"}));
 }
+
+TEST_CASE("2: Récupération des questions.xml"){
+  std::vector<Question> questions = parseXML("questionstest.xml");
+  // check si questions contient bien 3 questions 
+  CHECK(questions.size() == 3);
+
+  // check les éléments de la première question
+  CHECK(questions[0].get_question() == "Quel est le nom de la partie n°10 de la selle?");
+  CHECK(questions[0].get_reponse() == "Troussequin");
+  CHECK(compare_lists(questions[0].get_propositions(), {"Quartier", "Pommeau", "Siège", "Troussequin"}));
+}
