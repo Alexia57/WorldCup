@@ -1,0 +1,7 @@
+main.o: main.cpp Question.hpp usefull.hpp src/pugixml.hpp \
+ src/pugiconfig.hpp
+Question.o: Question.cpp Question.hpp
+QuestionImage.o: QuestionImage.cpp
+usefull.o: usefull.cpp usefull.hpp Question.hpp src/pugixml.hpp \
+ src/pugiconfig.hpp
+pugixml.o: src/pugixml.cpp src/pugixml.hpp src/pugiconfig.hpp
