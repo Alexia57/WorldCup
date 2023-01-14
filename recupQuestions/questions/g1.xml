@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+    <question>
+        <text>Quel est le nom de la partie n°10 de la selle?</text>
+        <proposition>Quartier</proposition>
+        <proposition>Pommeau</proposition>
+        <proposition>Siège</proposition>
+        <proposition>Troussequin</proposition>
+        <reponse>Troussequin</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°1 du licol?</text>
+        <proposition>Montant</proposition>
+        <proposition>Muserolle</proposition>
+        <proposition>Alliance</proposition>
+        <proposition>Sous-gorge</proposition>
+        <reponse>Muserolle</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°2 du filet?</text>
+        <proposition>Frontal</proposition>
+        <proposition>Têtière</proposition>
+        <proposition>Montant</proposition>
+        <proposition>Rênes</proposition>
+        <reponse>Frontal</reponse>
+    </question>
+    <question>
+        <text>Le port du casque est-il obligatoire?</text>
+        <proposition>Oui</proposition>
+        <proposition>Non</proposition>
+        <reponse>Oui</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°10 du cheval?</text>
+        <proposition>Encolure</proposition>
+        <proposition>Garrot</proposition>
+        <proposition>Dos</proposition>
+        <proposition>Croupe</proposition>
+        <reponse>Garrot</reponse>
+    </question>
+    <question>
+        <text>Quand tu déssangles pour enlever la selle, tu ne dois pas lâcher la sangle, pourquoi ?</text>
+        <proposition>Pour éviter qu’elle fasse du bruit</proposition>
+        <proposition>Pour éviter qu’elle tombe par terre</proposition>
+        <proposition>Pour éviter de frapper les jambes du poney</proposition>
+        <reponse>Pour éviter de frapper les jambes du poney</reponse>
+    </question>
+    <question>
+        <text>Quelle est cette discipline équestre?</text>
+        <proposition>Dressage</proposition>
+        <proposition>CCE</proposition>
+        <proposition>CSO</proposition>
+        <proposition>Polo</proposition>
+        <reponse>CSO</reponse>
+    </question>
+</questions>

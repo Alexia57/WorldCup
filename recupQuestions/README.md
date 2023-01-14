@@ -4,7 +4,7 @@ Pour compiler le projet :
 ``make``
 
 Pour lancer le projet :
-``make``
+``./projet``
 
 Pour compiler les tests unitaires :
 ``make testcase``

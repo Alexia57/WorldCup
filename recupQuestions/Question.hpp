@@ -22,10 +22,20 @@ public:
     // return la reponse
     std::string get_reponse();
 
+    // return le booleen de présence d'image
+    std::string get_isImage();
+    // return le nom de l'image
+    std::string get_image();
+    // return le chemin de l'image
+    std::string get_chemin();
+
 private:
     std::string _question;
     std::list<std::string> _propositions;
     std::string _reponse;
-    // maybe size_t pour le nombre de props
-    // un id de la question
+    bool isImage ; // 1 si il y a une image 0 sinon
+    std::string image; // nom de l'image 
+    std::string chemin; // chemin de l'image
+    bool estVertical; // 1 si l'image est vertical et 0 si horizontal
+    // un id de la question ?
 };

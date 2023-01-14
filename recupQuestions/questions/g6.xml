@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+    <question>
+        <text>Quel est le nom de la partie n°3 du pied du cheval?</text>
+        <proposition>Os du paturon</proposition>
+        <proposition>Os grand sésamoïde</proposition>
+        <proposition>Os du canon</proposition>
+        <proposition>Os naviculaire</proposition>
+        <reponse>Os du paturon</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°4 du fer du cheval?</text>
+        <proposition>Pince</proposition>
+        <proposition>Quartier</proposition>
+        <proposition>Eponge</proposition>
+        <proposition>Mamelle</proposition>
+        <reponse>Mamelle</reponse>
+    </question>
+    <question>
+        <text>Quelle est la durée de la période de gestation chez la jument?</text>
+        <proposition>7-8 mois</proposition>
+        <proposition>9-10 mois</proposition>
+        <proposition>11-12 mois</proposition>
+        <proposition>13-14 mois</proposition>
+        <reponse>11-12 mois</reponse>
+    </question>
+    <question>
+        <text>Le galop à faux ou contre galop n'a pas cette caractéristique :</text>
+        <proposition>développer l'équilibre du cheval</proposition>
+        <proposition>développer les muscles de l'arrière main du cheval</proposition>
+        <proposition>le cheval est sur le pied droit quand il tourne à gauche</proposition>
+        <proposition>il permet au cheval de moins engager le postérieur interne</proposition>
+        <reponse>il permet au cheval de moins engager le postérieur interne</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de cet obstacle de cross?</text>
+        <proposition>Le talus mexicain</proposition>
+        <proposition>Le talus portugais</proposition>
+        <proposition>Le talus breton</proposition>
+        <proposition>Le talus belge</proposition>
+        <reponse>Le talus breton</reponse>
+    </question>
+    <question>
+        <text>Quel est l'intru?</text>
+        <proposition>Coup de pression</proposition>
+        <proposition>Fourbure</proposition>
+        <proposition>Surmenage</proposition>
+        <proposition>Colique</proposition>
+        <reponse>Coup de pression</reponse>
+    </question>
+    <question>
+        <text>Quelle est l'attitude de ce cheval?</text>
+        <proposition>Sur la main</proposition>
+        <proposition>En main</proposition>
+        <proposition>Enfermé</proposition>
+        <proposition>Plaqué</proposition>
+        <reponse>Enfermé</reponse>
+    </question>
+</questions>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+    <question>
+        <text>Quelle est la temprérature normale pour un cheval?</text>
+        <proposition>Entre 35,5 et 36 °C</proposition>
+        <proposition>Entre 36 et 37.5 °C</proposition>
+        <proposition>Entre 37,5 et 38 °C</proposition>
+        <proposition>Entre 38 et 39.5 °C</proposition>
+        <reponse>Entre 37,5 et 38 °C</reponse>
+    </question>
+    <question>
+        <text>Le cheval est pucé?</text>
+        <proposition>Vrai</proposition>
+        <proposition>Faux</proposition>
+        <reponse>Vrai</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°3 du système digestif du cheval?</text>
+        <proposition>Diaphragme</proposition>
+        <proposition>Estomac</proposition>
+        <proposition>Gros intestin</proposition>
+        <proposition>Intestin grêle</proposition>
+        <reponse>Intestin grêle</reponse>
+    </question>
+    <question>
+        <text>Quelle affirmation est fausse?</text>
+        <proposition>L'estomac a une contenance de 12-15 litres.</proposition>
+        <proposition>Le cheval vomit en cas d'ingestion d'aliments toxiques.</proposition>
+        <proposition>Le cheval n'a pas de vésicule biliaire.</proposition>
+        <proposition>Le cheval ne doit pas manger de tomates.</proposition>
+        <reponse>Le cheval vomit en cas d'ingestion d'aliments toxiques.</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de l'obstacle sauté par le cheval?</text>
+        <proposition>Un vertical</proposition>
+        <proposition>Un oxer</proposition>
+        <proposition>Une spa</proposition>
+        <proposition>Un oxer polonais</proposition>
+        <reponse>Un vertical</reponse>
+    </question>
+    <question>
+        <text>Que signifie l'abréviation SIRE?</text>
+        <proposition>Soin Intensif et Rééducation Equine</proposition>
+        <proposition>Système d'Immatriculation  des Risques à l'Ecurie</proposition>
+        <proposition>Système d’Identification Répertoriant les Équidés</proposition>
+        <proposition>Série d'Itinéraires Routiers pour Equidés</proposition>
+        <reponse>Système d’Identification Répertoriant les Équidés</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de l'os n°20 du cheval?</text>
+        <proposition>Rotule</proposition>
+        <proposition>Carpe</proposition>
+        <proposition>Os Canon</proposition>
+        <proposition>Grand Sésamoïde</proposition>
+        <reponse>Carpe</reponse>
+    </question>
+</questions>
