@@ -13,6 +13,7 @@ private:
 
 public:
     Button(){}
+    ~Button(){}
 
     void Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
            const sf::Color& hoverColor, const std::string& text, const sf::Font& font);

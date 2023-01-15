@@ -14,7 +14,9 @@ private:
     int _numQuestion;
     std::list<Question> _questions;
 
-    sf::Image _img;
+    sf::Texture _imgTexture;
+    sf::Sprite _imgSprite;
+    bool _isImg;
     sf::Text _txtQuestion;
     Button *_buttonProp;
     int _sizeProp;
