@@ -1,15 +1,17 @@
 CC=g++
 CCFLAGS= -Wall -Werror -std=c++11 -g
-SRC= $(wildcard ../*.cc)
-OBJ= $(SRC:.cc=.o)
-TST= $(wildcard *.cc)
-OBJ_TEST = $(filter-out ../main.o, $(OBJ)) $(TST:.cc=.o)
+LIBS= -I ../lib/pugixml/ -lsfml-graphics -lsfml-window -lsfml-system
+LIBFLAGS= -L ../lib/pugixml/ -lpugixml
+SRC= $(filter-out ../src/main.cpp, $(wildcard ../src/*.cpp)) ../lib/pugixml/pugixml.cpp
+OBJ= $(SRC:.cpp=.o)
+SRC_TEST= $(wildcard *.cpp)
+OBJ_TEST = $(OBJ) $(SRC_TEST:.cpp=.o)
 
 testcase : $(OBJ_TEST) 
-	$(CC) $(CCFLAGS)  -o $@ $^
+	$(CC) $(CCFLAGS)  -o $@ $^ $(LIBS)
 
-%.o: %.cc
-	$(CC) $(CCFLAGS) -I../ -o $@ -c $<
+%.o: %.cpp
+	$(CC) $(CCFLAGS) -o $@ -c $< $(LIBS)
 
 clean :
 	rm -f $(OBJ_TEST) testcase
