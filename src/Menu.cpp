@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Menu.hpp"
-#include "Quizz.hpp"
+#include "SelectGalop.hpp"
 #include "Useful.hpp"
 #include <string>
 #include <vector>
@@ -10,13 +10,13 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
     Useful::setTxt(_menuText, "Menu", *font, 60, wSize.x/2, wSize.y/5);
+
     sf::Vector2f size(250.f,100.f);
     sf::Vector2f position1(wSize.x/4.f, wSize.y*3/5.f);
     sf::Vector2f position2(wSize.x*3/4.f, wSize.y*3/5.f);
     sf::Color    grey(150, 150, 150);
     sf::Color    red(255, 100, 100);
 
-    
     _option1.Setting(size, position1, grey, red, "Option 1", *font);
     _option2.Setting(size, position2, grey, red, "Option 2", *font);
 
@@ -29,7 +29,7 @@ Menu::~Menu()
 
 }
 
-Screen* Menu::HandleEvent(sf::RenderWindow& window,sf::Event &event)
+void Menu::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 {   
     _option1.HandleEvent(event);
     _option2.HandleEvent(event);
@@ -39,24 +39,18 @@ Screen* Menu::HandleEvent(sf::RenderWindow& window,sf::Event &event)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && _selectedOption < 2) {
         _selectedOption = 2;
     } */
+}
+
+Screen* Menu::Update(sf::RenderWindow& window)
+{
+    //_option1.setFillColor(sf::Color::White);
+    //_option2.setFillColor(sf::Color::White);
     if(_option2.isHover()){
-        sf::String tab[4];
-        tab[0] = "Blanc";
-        tab[1] = "Noir";
-        tab[2] = "Marron";
-        tab[3] = "Rouge";
-        Quizz* screen = new Quizz(window, _font, "Quelle est la couleur du cheval ?", tab, 4);
+        SelectGalop* screen = new SelectGalop(window, _font);
         return screen;
     }
 
     return this;
-}
-
-void Menu::Update(sf::RenderWindow& window)
-{
-    //_option1.setFillColor(sf::Color::White);
-    //_option2.setFillColor(sf::Color::White);
-      
        
     /* switch (_selectedOption) {
         case 1:

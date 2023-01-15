@@ -1,68 +1,76 @@
 #include <iostream>
+#include <list>
+#include <vector>
+
 #include "Quizz.hpp"
 #include "Useful.hpp"
 
-Quizz::Quizz(sf::RenderWindow& window, sf::Font *font, sf::String question, sf::String *proposition, int sizeProp):Screen(font)
+
+
+Quizz::Quizz(sf::RenderWindow& window, sf::Font *font, int galop) : Screen(font)
 {
-    _sizeProp = sizeProp;
-    _proposition = new sf::Text[sizeProp];
+    _galop = galop;
     
+    std::string pathQuestions= "assets/questions/g" + std::to_string(galop) + ".xml";
+    parseXML(pathQuestions, _questions);
+
+
+    //Print first question
+    _sizeProp = _questions.front().get_propositions().size();
+    _buttonProp = new Button[_sizeProp];
+
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
-    int nLine = _sizeProp/3 + (_sizeProp%3 != 0);
-    
-    Useful::setTxt(_question, question, *font, 60, wSize.x/2, wSize.y/(nLine+2));
-    
-    
-    for(int line = 0; line < nLine; line++){
+
+    if(_questions.front().isImage() == 0){
+        int nLine = _sizeProp/2 + (_sizeProp%2 != 0);
+        Useful::setTxt(_txtQuestion, _questions.front().get_question(), *font, 60, wSize.x/2, wSize.y/(nLine+2));
         
-        int ncol = (line == nLine-1) ? _sizeProp%3 : 3;
-        for(int i = 0; i < ncol; i++){
-            Useful::setTxt(_proposition[line*3+i], proposition[line*3+i], *font, 40, wSize.x*(i+1)/(ncol+1), wSize.y*(line+2)/(nLine+2));
-        }  
-    }
+        sf::Vector2f size(250.f,100.f);
+        sf::Color    grey(150, 150, 150);
+        sf::Color    red(255, 100, 100);
+
+        std::vector<std::string> *prop = &(_questions.front().get_propositions());
+
+        for(int line = 0; line < nLine; line++){
+            int ncol = (line == nLine-1 && _sizeProp%2!=0) ? _sizeProp%2 : 2;
+
+            for(int i = 0; i < ncol; i++){
+                sf::Vector2f pos(wSize.x*(i+1)/(ncol+1), wSize.y*(line+2)/(nLine+2));
+                _buttonProp[line*2+i].Setting(size, pos, grey, red, (*prop)[line*2+i], *font);
+            }  
+        }
+    }  
 }
 
 Quizz::~Quizz()
 {
-    delete [] _proposition;
+    delete [] _buttonProp;
 }
 
-Screen* Quizz::HandleEvent(sf::RenderWindow& window,sf::Event &event)
+void Quizz::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 {   
-    //std::cout << "Quizz Event\n";
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && _selectedOption > 0) {
-        _selectedOption = 1;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && _selectedOption < 2) {
-        _selectedOption = 2;
-    }
-    return this;
+    for(int i = 0; i < _sizeProp; i++)
+        _buttonProp[i].HandleEvent(event);
 }
 
-void Quizz::Update(sf::RenderWindow& window)
+Screen* Quizz::Update(sf::RenderWindow& window)
 {
-    _question.setFillColor(sf::Color::White);
     
-    for(int i = 0; i < _sizeProp; i++)
-        _proposition[i].setFillColor(sf::Color::White);
+    for(int i = 0; i < _sizeProp; i++){
+        if(_buttonProp[i].isHover()){
+            break;
+            // Not implemented
+        }
+            
+    }
 
-
-    /* switch (_selectedOption) {
-        case 1:
-            option1.setFillColor(sf::Color::Red);
-            break;
-        case 2:
-            option2.setFillColor(sf::Color::Red);
-            break;
-        default:
-            break;
-    } */
+    return this;
 }
 
 void Quizz::Draw(sf::RenderWindow& window)
 {
-    window.draw(_question);
+    window.draw(_txtQuestion);
 
     for(int i = 0; i < _sizeProp; i++)
-        window.draw(_proposition[i]);
+        _buttonProp[i].Draw(window);
 }

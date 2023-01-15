@@ -18,12 +18,12 @@ public:
     // return la question
     const std::string &get_question() const;
     // return le tableau des propositions
-    const std::vector<std::string> &get_propositions() const;
+    std::vector<std::string> &get_propositions();
     // return la reponse
     const std::string &get_answer() const;
 
     // return le booleen de présence d'image
-    const bool &isImage() const;
+    bool isImage() const;
     // return le nom de l'image
     const std::string &get_image() const;
     // return le chemin de l'image

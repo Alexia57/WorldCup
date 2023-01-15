@@ -1,23 +1,22 @@
-#ifndef MENU_HPP
-#define MENU_HPP
+#ifndef SELECTGALOP_HPP
+#define SELECTGALOP_HPP
 
 #include "Screen.hpp"
 #include "Button.hpp"
 
-class Menu : public Screen
+class SelectGalop : public Screen
 {
 private:
     int _selectedOption = 0;
-    sf::Text _menuText;
-    Button _option1;
-    Button _option2;
+    sf::Text _Title;
+    Button _galop[7];
 
 public:
-    Menu(sf::RenderWindow& window, sf::Font *font);
-    ~Menu() override;
+    SelectGalop(sf::RenderWindow& window, sf::Font *font);
+    ~SelectGalop() override;
     void HandleEvent(sf::RenderWindow& window,sf::Event &event) override;
     Screen* Update(sf::RenderWindow& window) override;
     void Draw(sf::RenderWindow& window) override;
 };
 
-#endif /* MENU_HPP */
+#endif /* SELECTGALOP_HPP */

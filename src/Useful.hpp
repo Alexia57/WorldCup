@@ -16,7 +16,7 @@
 bool compare_lists(std::list<std::string> lst1, std::list<std::string> lst2);
 
 // fonction pour récupérer les données d'un fichier XML dans des variables de la classe Question
-std::vector<Question> parseXML(const std::string& fileName);
+void parseXML(const std::string& fileName, std::list<Question> &questions);
 
 class Useful {
 public:

@@ -2,27 +2,29 @@
 #define QUIZZ_HPP
 
 #include "Screen.hpp"
+#include "Button.hpp"
 #include "Question.hpp"
+
 
 class Quizz : public Screen
 {
 private:
     int _selectedOption = 0;
-    int _galo;
+    int _galop;
     int _score;
     int _nquestion;
-    std::vector<Question>& questions;
+    std::list<Question> _questions;
 
     sf::Image _img;
-    sf::Text _question;
-    sf::Text *_proposition;
+    sf::Text _txtQuestion;
+    Button *_buttonProp;
     int _sizeProp;
 
 public:
-    Quizz(sf::RenderWindow& window, sf::Font *font, sf::String question, sf::String *proposition, int sizeProp);
+    Quizz(sf::RenderWindow& window, sf::Font *font, int galop);
     ~Quizz() override;
-    Screen* HandleEvent(sf::RenderWindow& window,sf::Event &event) override;
-    void Update(sf::RenderWindow& window) override;
+    void HandleEvent(sf::RenderWindow& window,sf::Event &event) override;
+    Screen* Update(sf::RenderWindow& window) override;
     void Draw(sf::RenderWindow& window) override;
 };
 

@@ -16,8 +16,8 @@ private:
     Application(sf::RenderWindow& window);
     
     void Loop(sf::RenderWindow& window);
-    Screen* HandleEvent(sf::RenderWindow& window, Screen& currentScreen);
-    void Update(sf::RenderWindow& window, Screen& currentScreen);
+    void HandleEvent(sf::RenderWindow& window, Screen& currentScreen);
+    Screen* Update(sf::RenderWindow& window, Screen& currentScreen);
     void Draw(sf::RenderWindow& window, Screen& currentScreen);
     
 

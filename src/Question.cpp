@@ -23,7 +23,7 @@ const std::string &Question::get_question() const
     return this->_question;
 }
 
-const std::vector<std::string> &Question::get_propositions() const
+std::vector<std::string> &Question::get_propositions()
 {
     return this->_propositions;
 }
@@ -33,7 +33,7 @@ const std::string &Question::get_answer() const
     return this->_answer;
 }
 
-const bool &Question::isImage() const
+bool Question::isImage() const
 {
     return this->_image.empty() == 0;
 }
