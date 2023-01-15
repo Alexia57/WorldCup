@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
     <question>
-        <text>Quelle est la temprérature normale pour un cheval?</text>
+        <text>Quelle est la température normale pour un cheval?</text>
         <proposition>Entre 35,5 et 36 °C</proposition>
         <proposition>Entre 36 et 37.5 °C</proposition>
         <proposition>Entre 37,5 et 38 °C</proposition>

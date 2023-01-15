@@ -9,10 +9,9 @@
 class Quizz : public Screen
 {
 private:
-    int _selectedOption = 0;
     int _galop;
-    int _score;
-    int _nquestion;
+    int _score = 0;
+    int _numQuestion;
     std::list<Question> _questions;
 
     sf::Image _img;
@@ -23,6 +22,8 @@ private:
 public:
     Quizz(sf::RenderWindow& window, sf::Font *font, int galop);
     ~Quizz() override;
+
+    void RunQuestion(sf::RenderWindow& window);
     void HandleEvent(sf::RenderWindow& window,sf::Event &event) override;
     Screen* Update(sf::RenderWindow& window) override;
     void Draw(sf::RenderWindow& window) override;

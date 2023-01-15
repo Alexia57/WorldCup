@@ -23,13 +23,29 @@ sf::String UTF8_to_UTF32(std::string str);
 
 class Useful {
 public:
-    static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y)
+    static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, sf::Vector2f &dimBox)
     {
         txt.setString(UTF8_to_UTF32(string));
         txt.setFont(font);
         txt.setCharacterSize(charSize);
         txt.setOrigin(round(txt.getGlobalBounds().width / 2.f), round(txt.getGlobalBounds().height / 2.f));
         txt.setPosition(sf::Vector2f(x,y));
+
+        resizeTxt(txt, charSize, x, y, dimBox);
+    }
+
+    static void resizeTxt(sf::Text& txt, int charSize, int x, int y,sf::Vector2f &dimBox)
+    {
+        sf::FloatRect txtRect = txt.getGlobalBounds();
+        int cSize = charSize;
+        while(txtRect.left < 0 || txtRect.top < 0 || txtRect.top+txtRect.height > dimBox.y 
+            || txtRect.left+txtRect.width > dimBox.x){
+            cSize -= 5;
+            txt.setCharacterSize(cSize);
+            txtRect = txt.getGlobalBounds();
+            txt.setOrigin(round(txtRect.width / 2.f), round(txtRect.height / 2.f));
+            txt.setPosition(sf::Vector2f(x,y));
+        }
     }
 };
 
