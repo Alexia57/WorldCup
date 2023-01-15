@@ -34,3 +34,7 @@ void parseXML(const std::string& fileName, std::list<Question> &questions) {
     }
     
 }
+
+sf::String UTF8_to_UTF32(std::string str){
+    return sf::String::fromUtf8(str.begin(),str.end());
+}

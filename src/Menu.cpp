@@ -18,7 +18,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     sf::Color    red(255, 100, 100);
 
     _option1.Setting(size, position1, grey, red, "Option 1", *font);
-    _option2.Setting(size, position2, grey, red, "Option 2", *font);
+    _option2.Setting(size, position2, grey, red, "QUIZZ", *font);
 
     //Useful::setTxt(_option1, "Option 1", *font, 40, wSize.x/4, wSize.y*3/5);
     //Useful::setTxt(_option2, "Option 2", *font, 40, wSize.x*3/4, wSize.y*3/5);

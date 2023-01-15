@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Button.hpp"
+#include "Useful.hpp"
 
 
 void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
@@ -14,7 +15,7 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
     _shape.setPosition(position);
     _shape.setFillColor(color);
     
-    _text.setString(text);
+    _text.setString(UTF8_to_UTF32(text));
     _text.setFont(font);
     _text.setCharacterSize(40);
     _text.setFillColor(sf::Color::White);
