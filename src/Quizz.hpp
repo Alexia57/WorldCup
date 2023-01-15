@@ -2,11 +2,17 @@
 #define QUIZZ_HPP
 
 #include "Screen.hpp"
+#include "Question.hpp"
 
 class Quizz : public Screen
 {
 private:
     int _selectedOption = 0;
+    int _galo;
+    int _score;
+    int _nquestion;
+    std::vector<Question>& questions;
+
     sf::Image _img;
     sf::Text _question;
     sf::Text *_proposition;

@@ -10,32 +10,34 @@ class Question
 public:
     // constructeurs
     Question();
-    Question(std::string question, std::list<std::string> propositions, std::string reponse);
-    Question(std::string question, std::string p1, std::string p2, std::string p3, std::string p4, std::string reponse);
+    Question(std::string question, std::vector<std::string> propositions, std::string answer);
+    Question(std::string question, std::string p1, std::string p2, std::string p3, std::string p4, std::string answer);
 
     // fonctions
 
     // return la question
-    std::string get_question();
-    // return la liste des propositions
-    std::list<std::string> get_propositions();
+    const std::string &get_question() const;
+    // return le tableau des propositions
+    const std::vector<std::string> &get_propositions() const;
     // return la reponse
-    std::string get_reponse();
+    const std::string &get_answer() const;
 
     // return le booleen de présence d'image
-    std::string get_isImage();
+    const bool &isImage() const;
     // return le nom de l'image
-    std::string get_image();
+    const std::string &get_image() const;
     // return le chemin de l'image
-    std::string get_chemin();
+    const std::string &get_pathImage() const;
+    
+    const bool &isImageVertical() const;
 
 private:
     std::string _question;
-    std::list<std::string> _propositions;
-    std::string _reponse;
-    bool isImage ; // 1 si il y a une image 0 sinon
-    std::string image; // nom de l'image 
-    std::string chemin; // chemin de l'image
-    bool estVertical; // 1 si l'image est vertical et 0 si horizontal
+    std::vector<std::string> _propositions;
+    std::string _answer;
+
+    std::string _image; // nom de l'image 
+    std::string _pathImage; // chemin de l'image
+    bool _isVertical; // 1 si l'image est vertical et 0 si horizontal
     // un id de la question ?
 };
