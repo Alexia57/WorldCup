@@ -18,7 +18,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     sf::Color    grey(150, 150, 150);
     sf::Color    red(255, 100, 100);
 
-    _option1.Setting(size, position1, grey, red, "Option 1", *font);
+    _option1.Setting(size, position1, grey, red, "Revision", *font);
     _option2.Setting(size, position2, grey, red, "QUIZZ", *font);
 
     //Useful::setTxt(_option1, "Option 1", *font, 40, wSize.x/4, wSize.y*3/5);
@@ -39,9 +39,15 @@ void Menu::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 Screen* Menu::Update(sf::RenderWindow& window)
 {
     if(_option2.isHover()){
-        SelectGalop* screen = new SelectGalop(window, _font);
+        SelectGalop* screen = new SelectGalop(window, _font, 2);
         return screen;
     }
+
+     if(_option1.isHover()){
+        SelectGalop* screen = new SelectGalop(window, _font, 1);
+        return screen;
+    }
+    
 
     return this;
 }

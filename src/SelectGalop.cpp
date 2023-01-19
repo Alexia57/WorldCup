@@ -1,12 +1,14 @@
 #include "SelectGalop.hpp"
 #include "Quizz.hpp"
+#include "Revision.hpp"
 #include "Useful.hpp"
 #include <string>
 
-SelectGalop::SelectGalop(sf::RenderWindow& window, sf::Font *font) : Screen(font)
+SelectGalop::SelectGalop(sf::RenderWindow& window, sf::Font *font, int option) : Screen(font)
 {
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
+    _option = option;
     window.setTitle("Selection du Galop");
     Useful::setTxt(_Title, "Sélection du Galop à tester :", *font, 60, wSize.x/2, wSize.y/7, wSize);
 
@@ -40,9 +42,16 @@ Screen* SelectGalop::Update(sf::RenderWindow& window)
 {
     for(int i = 0; i < 7; i++){
         if(_galop[i].isHover()){
-        
-            Quizz* screen = new Quizz(window, _font, i+1);
-            return screen;
+            
+            if(_option == 2){
+                Quizz* screen = new Quizz(window, _font, i+1);
+                return screen;
+            }
+            if(_option == 1){
+                Revision* screen = new Revision(window, _font, i+1);
+                return screen;
+            }
+            
         }
     }
 

@@ -27,6 +27,10 @@ inline bool exists (const std::string& name) {
   return (stat (name.c_str(), &buffer) == 0); 
 }
 
+std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &format);
+
+void printRect(sf::FloatRect rect);
+
 class Useful {
 public:
     static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, sf::Vector2f &dimBox)
@@ -54,6 +58,10 @@ public:
             txt.setOrigin(round(txtRect.width / 2.f), round(txtRect.height / 2.f));
             txt.setPosition(sf::Vector2f(x,y));
         }
+    }
+
+    static float min(float a, float b){
+        return (a < b)? a : b;
     }
 };
 

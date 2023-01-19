@@ -2,9 +2,6 @@
 #include "Button.hpp"
 #include "Useful.hpp"
 
-void printRect(sf::FloatRect rect){
-    std::cout << "top = "<< rect.top << " | left = " << rect.left << " | height = " << rect.height << " | width = " << rect.width << std::endl;
-}
 
 void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
     const sf::Color& hoverColor, const std::string& text, const sf::Font& font)
@@ -54,6 +51,7 @@ void Button::setDefaultColor(const sf::Color& color){
 
 void Button::turnOff(){
     _isActive = false;
+    _isHover = false;
     _shape.setFillColor(_defaultColor);
 }
 

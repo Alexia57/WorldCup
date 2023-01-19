@@ -7,7 +7,6 @@
 class Menu : public Screen
 {
 private:
-    int _selectedOption = 0;
     sf::Text _menuText;
     Button _option1;
     Button _option2;
