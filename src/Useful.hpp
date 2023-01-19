@@ -27,7 +27,7 @@ inline bool exists (const std::string& name) {
   return (stat (name.c_str(), &buffer) == 0); 
 }
 
-std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &format);
+std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &pattern);
 
 void printRect(sf::FloatRect rect);
 

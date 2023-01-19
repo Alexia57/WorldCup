@@ -13,13 +13,13 @@ bool compare_lists(std::list<std::string> lst1, std::list<std::string> lst2){
     return true;
 }
 
-std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &format) {
+std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &pattern) {
     std::vector<std::string> files;
     DIR *dir;
     struct dirent *ent;
     if ((dir = opendir(pathDir.c_str())) != NULL) {
         while ((ent = readdir(dir)) != NULL) {
-            if (fnmatch(format.c_str(), ent->d_name, 0) == 0) {
+            if (fnmatch(pattern.c_str(), ent->d_name, 0) == 0) {
                 files.push_back(ent->d_name);
             }
         }
