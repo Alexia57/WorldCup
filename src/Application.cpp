@@ -45,7 +45,7 @@ void Application::Draw(sf::RenderWindow& window, Screen& currentScreen)
 
 void Application::Loop(sf::RenderWindow& window)
 {
-    Screen *currentScreen = new Menu(window, &_font);;
+    Screen *currentScreen = new Menu(window, &_font);
     
     while (window.isOpen()) {
         HandleEvent(window, *currentScreen);

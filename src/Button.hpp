@@ -10,6 +10,7 @@ private:
     sf::Color _defaultColor;
     sf::Color _hoverColor;
     bool _isHover = false;
+    bool _isActive = true;
 
 public:
     Button(){}
@@ -17,6 +18,9 @@ public:
 
     void Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
            const sf::Color& hoverColor, const std::string& text, const sf::Font& font);
+    void setDefaultColor(const sf::Color& color);
+    void turnOff();
+    void turnOn();
     bool isHover(){ return _isHover; }
     void HandleEvent(sf::Event event);
     void Update();

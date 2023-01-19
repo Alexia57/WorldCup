@@ -46,7 +46,9 @@ public:
         int cSize = charSize;
         while(txtRect.left < 0 || txtRect.top < 0 || txtRect.top+txtRect.height > dimBox.y 
             || txtRect.left+txtRect.width > dimBox.x){
-            cSize -= 5;
+            cSize -= 3;
+            if(cSize < 5)
+                break;
             txt.setCharacterSize(cSize);
             txtRect = txt.getGlobalBounds();
             txt.setOrigin(round(txtRect.width / 2.f), round(txtRect.height / 2.f));

@@ -8,6 +8,7 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
 {
     _defaultColor = color;
     _hoverColor = hoverColor;
+    _isActive = true;
     
     _shape.setSize(size);
     sf::FloatRect shapeRect = _shape.getLocalBounds();
@@ -23,27 +24,45 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
     sf::FloatRect textRect = _text.getLocalBounds();
     _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     _text.setPosition(position.x, position.y);
+    sf::Vector2f box(size);
+    //Useful::resizeTxt(_text, 40, position.x, position.y, box);
+}
+
+void Button::setDefaultColor(const sf::Color& color){
+    _defaultColor = color;
+    _shape.setFillColor(color);
+}
+
+void Button::turnOff(){
+    _isActive = false;
+    _shape.setFillColor(_defaultColor);
+}
+
+void Button::turnOn(){
+    _isActive = true;
+    _isHover = false;
 }
 
 void Button::HandleEvent(sf::Event event) {
 
-    if (event.type == sf::Event::MouseMoved) {
+    if(_isActive) {
+        if (event.type == sf::Event::MouseMoved) {
         
-        if (_shape.getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y)) {
-            _shape.setFillColor(_hoverColor);
-        } else {
-            _shape.setFillColor(_defaultColor);
-        }
+            if (_shape.getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y)) {
+                _shape.setFillColor(_hoverColor);
+            } else {
+                _shape.setFillColor(_defaultColor);
+            }
 
-    } else if (event.type == sf::Event::MouseButtonPressed) {
-        if (event.mouseButton.button == sf::Mouse::Left) {
-            
-            if (_shape.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-                _isHover = true;
+        } else if (event.type == sf::Event::MouseButtonPressed) {
+            if (event.mouseButton.button == sf::Mouse::Left) {
+                
+                if (_shape.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+                    _isHover = true;
+                }
             }
         }
     }
-
 }
 
 void Button::Draw(sf::RenderWindow& window) {
