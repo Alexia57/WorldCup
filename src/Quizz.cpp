@@ -16,11 +16,13 @@ Quizz::Quizz(sf::RenderWindow& window, sf::Font *font, int galop) : Screen(font)
     std::string pathQuestions= "assets/questions/g" + std::to_string(galop) + ".xml";
     parseXML(pathQuestions, _questions);
     
+    _imgSprite = new sf::Sprite;
     RunQuestion(window);
 }
 
 Quizz::~Quizz()
 {
+    delete _imgSprite;
     delete [] _buttonProp;
 }
 
@@ -41,7 +43,9 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
         _imgTexture.loadFromFile(imgPath);
         _imgTexture.setSmooth(true);
         
-        _imgSprite.setTexture(_imgTexture);
+        delete _imgSprite;
+        _imgSprite = new sf::Sprite;
+        _imgSprite->setTexture(_imgTexture);
     }
 
     int nLine = _sizeProp + 1;
@@ -62,14 +66,17 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
         }
 
     }else{
+        float space = wSize.y*0.03;
 
-        sf::FloatRect Rect = _imgSprite.getLocalBounds();
-        _imgSprite.setOrigin(Rect.left + Rect.width / 2.0f, Rect.top + Rect.height / 2.0f);
-        _imgSprite.setPosition(wSize.x/4, wSize.y*(1.8+(_sizeProp-1)+1.8)/2/(nLine+1));
+        sf::FloatRect Rect = _imgSprite->getLocalBounds();
+        float scale = Useful::min(wSize.y*0.60/Rect.height,wSize.x*0.45/Rect.width);
+        _imgSprite->setScale(scale, scale);
+        _imgSprite->setOrigin(Rect.left + Rect.width / 2.0f, Rect.top + Rect.height / 2.0f);
+        _imgSprite->setPosition(wSize.x/4, wSize.y*(1.8+(_sizeProp-1)+1.8)/2/(nLine+1) + space);
         sf::Vector2f size(wSize.x*0.4,wSize.y*0.65/(nLine+1));
 
         for(int i = 0; i < _sizeProp; i++){
-            sf::Vector2f pos(wSize.x*3/4, wSize.y*(i+1.8)/(nLine+1));
+            sf::Vector2f pos(wSize.x*3/4, wSize.y*(i+1.8)/(nLine+1) + space);
             _buttonProp[i].Setting(size, pos, grey, red, (*prop)[i], *_font);
         }
     }
@@ -90,7 +97,7 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
     Useful::setTxt(_answer, txt, *_font, 40, wSize.x/2, wSize.y*(1.1)/(_sizeProp+2), wSize);
     
     sf::Vector2f size(wSize.x*0.14,wSize.y*0.5/(_sizeProp+2));
-    sf::Vector2f pos(wSize.x*0.92, wSize.y*(_sizeProp+1.6)/(_sizeProp+2));
+    sf::Vector2f pos(wSize.x*0.92, wSize.y*(_sizeProp+1.7)/(_sizeProp+2));
     sf::Color    grey(150, 150, 150);
     sf::Color    red(255, 100, 100);
     _next.Setting(size, pos, grey, red, "Suivant", *_font);
@@ -174,7 +181,7 @@ void Quizz::Draw(sf::RenderWindow& window)
     window.draw(_txtQuestion);
 
     if(_isImg)
-        window.draw(_imgSprite);
+        window.draw(*_imgSprite);
 
     if(_isScore == 0){
         for(int i = 0; i < _sizeProp; i++)

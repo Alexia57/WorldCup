@@ -14,9 +14,9 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     std::string format = "g" + std::to_string(_galop) + "_*.png";
     _pathImg = getFileNames(pathDir, format);
 
-    std::cout << "size : " << _pathImg.size() << std::endl;
+    /* std::cout << "size : " << _pathImg.size() << std::endl;
     for(auto it =_pathImg.begin(); it!=_pathImg.end(); it++)
-        std::cout << (*it) << std::endl;
+        std::cout << (*it) << std::endl; */
     
     _nSheet = _pathImg.size();
     _imgTexture = new sf::Texture[_nSheet];

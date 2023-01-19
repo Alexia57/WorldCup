@@ -16,7 +16,7 @@ private:
 
     bool _isImg;
     sf::Texture _imgTexture;
-    sf::Sprite _imgSprite;
+    sf::Sprite *_imgSprite;
     
     sf::Text _txtQuestion;
     int _sizeProp;
