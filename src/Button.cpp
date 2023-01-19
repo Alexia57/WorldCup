@@ -2,6 +2,9 @@
 #include "Button.hpp"
 #include "Useful.hpp"
 
+void printRect(sf::FloatRect rect){
+    std::cout << "top = "<< rect.top << " | left = " << rect.left << " | height = " << rect.height << " | width = " << rect.width << std::endl;
+}
 
 void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
     const sf::Color& hoverColor, const std::string& text, const sf::Font& font)
@@ -24,8 +27,24 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
     sf::FloatRect textRect = _text.getLocalBounds();
     _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     _text.setPosition(position.x, position.y);
-    sf::Vector2f box(size);
-    //Useful::resizeTxt(_text, 40, position.x, position.y, box);
+
+    // Resize txt in box
+    int charSize = _text.getCharacterSize();
+    shapeRect = _shape.getGlobalBounds();
+    shapeRect.left += shapeRect.width*0.05;
+    shapeRect.width *= 0.90;
+    textRect = _text.getGlobalBounds();
+    while(!shapeRect.contains(textRect.left,textRect.top)){
+        charSize -= 3;
+        if(charSize < 10)
+            break;
+        
+        _text.setCharacterSize(charSize);
+        textRect = _text.getLocalBounds();
+        _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        _text.setPosition(position.x, position.y);
+        textRect = _text.getGlobalBounds();
+    }
 }
 
 void Button::setDefaultColor(const sf::Color& color){

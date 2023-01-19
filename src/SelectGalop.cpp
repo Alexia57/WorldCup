@@ -7,7 +7,7 @@ SelectGalop::SelectGalop(sf::RenderWindow& window, sf::Font *font) : Screen(font
 {
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
-    
+    window.setTitle("Selection du Galop");
     Useful::setTxt(_Title, "Sélection du Galop à tester :", *font, 60, wSize.x/2, wSize.y/7, wSize);
 
     sf::Vector2f size(200.f,80.f);

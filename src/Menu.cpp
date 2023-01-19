@@ -9,6 +9,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
 {
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
+    window.setTitle("Menu");
     Useful::setTxt(_menuText, "Menu", *font, 60, wSize.x/2, wSize.y/5, wSize);
 
     sf::Vector2f size(250.f,100.f);

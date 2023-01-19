@@ -45,7 +45,7 @@ public:
         sf::FloatRect txtRect = txt.getGlobalBounds();
         int cSize = charSize;
         while(txtRect.left < 0 || txtRect.top < 0 || txtRect.top+txtRect.height > dimBox.y 
-            || txtRect.left+txtRect.width > dimBox.x){
+            || txtRect.left+txtRect.width > dimBox.x*0.95){
             cSize -= 3;
             if(cSize < 5)
                 break;

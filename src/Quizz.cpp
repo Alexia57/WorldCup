@@ -12,6 +12,7 @@ Quizz::Quizz(sf::RenderWindow& window, sf::Font *font, int galop) : Screen(font)
     _galop = galop;
     _numQuestion = 1;
     
+    window.setTitle("Quizz");
     std::string pathQuestions= "assets/questions/g" + std::to_string(galop) + ".xml";
     parseXML(pathQuestions, _questions);
     
@@ -36,40 +37,39 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     _isImg = exists(imgPath);
 
     if(_isImg){
+        //std::cout << _imgTexture.getMaximumSize() << std::endl;
         _imgTexture.loadFromFile(imgPath);
+        _imgTexture.setSmooth(true);
+        
         _imgSprite.setTexture(_imgTexture);
     }
 
-    if(_questions.front().isImage() == 0){
-        /* int nLine = _sizeProp/2 + (_sizeProp%2 != 0);
-        Useful::setTxt(_txtQuestion, _questions.front().get_question(), *_font, 60, wSize.x/2, wSize.y/(nLine+2), wSize);
-        
-        sf::Vector2f size(250.f,100.f);
-        sf::Color    grey(150, 150, 150);
-        sf::Color    red(255, 100, 100);
+    int nLine = _sizeProp + 1;
+    Useful::setTxt(_txtQuestion, _questions.front().get_question(), *_font, 60, wSize.x/2, wSize.y*0.5/(nLine+1), wSize);
+    
+    std::vector<std::string> *prop = &(_questions.front().get_propositions());
+    sf::Color    grey(150, 150, 150);
+    sf::Color    red(255, 100, 100);
+    
 
-        std::vector<std::string> *prop = &(_questions.front().get_propositions());
-
-        for(int line = 0; line < nLine; line++){
-            int ncol = (line == nLine-1 && _sizeProp%2!=0) ? _sizeProp%2 : 2;
-
-            for(int i = 0; i < ncol; i++){
-                sf::Vector2f pos(wSize.x*(i+1)/(ncol+1), wSize.y*(line+2)/(nLine+2));
-                _buttonProp[line*2+i].Setting(size, pos, grey, red, (*prop)[line*2+i], *_font);
-            }  
-        } */
-
-        int nLine = _sizeProp + 1;
-        Useful::setTxt(_txtQuestion, _questions.front().get_question(), *_font, 60, wSize.x/2, wSize.y*0.5/(nLine+1), wSize);
+    if(_isImg == 0){
         
         sf::Vector2f size(wSize.x*0.65,wSize.y*0.65/(nLine+1));
-        sf::Color    grey(150, 150, 150);
-        sf::Color    red(255, 100, 100);
-
-        std::vector<std::string> *prop = &(_questions.front().get_propositions());
 
         for(int i = 0; i < _sizeProp; i++){
             sf::Vector2f pos(wSize.x/2, wSize.y*(i+1.8)/(nLine+1));
+            _buttonProp[i].Setting(size, pos, grey, red, (*prop)[i], *_font);
+        }
+
+    }else{
+
+        sf::FloatRect Rect = _imgSprite.getLocalBounds();
+        _imgSprite.setOrigin(Rect.left + Rect.width / 2.0f, Rect.top + Rect.height / 2.0f);
+        _imgSprite.setPosition(wSize.x/4, wSize.y*(1.8+(_sizeProp-1)+1.8)/2/(nLine+1));
+        sf::Vector2f size(wSize.x*0.4,wSize.y*0.65/(nLine+1));
+
+        for(int i = 0; i < _sizeProp; i++){
+            sf::Vector2f pos(wSize.x*3/4, wSize.y*(i+1.8)/(nLine+1));
             _buttonProp[i].Setting(size, pos, grey, red, (*prop)[i], *_font);
         }
     }
