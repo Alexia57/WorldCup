@@ -33,22 +33,4 @@ const std::string &Question::get_answer() const
     return this->_answer;
 }
 
-bool Question::isImage() const
-{
-    return this->_image.empty() == 0;
-}
 
-const std::string &Question::get_image() const
-{
-    return this->_image;
-}
-
-const std::string &Question::get_pathImage() const
-{
-    return this->_answer;
-}
-
-const bool &Question::isImageVertical() const
-{
-    return this->_isVertical;
-}

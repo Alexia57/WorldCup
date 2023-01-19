@@ -96,8 +96,8 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
 
     Useful::setTxt(_answer, txt, *_font, 40, wSize.x/2, wSize.y*(1.1)/(_sizeProp+2), wSize);
     
-    sf::Vector2f size(wSize.x*0.14,wSize.y*0.5/(_sizeProp+2));
-    sf::Vector2f pos(wSize.x*0.92, wSize.y*(_sizeProp+1.7)/(_sizeProp+2));
+    sf::Vector2f size(wSize.x*0.14,wSize.y*0.45/6);
+    sf::Vector2f pos(wSize.x*0.92, wSize.y*5.65/6);
     sf::Color    grey(150, 150, 150);
     sf::Color    red(255, 100, 100);
     _next.Setting(size, pos, grey, red, "Suivant", *_font);

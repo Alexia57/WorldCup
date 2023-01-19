@@ -22,22 +22,12 @@ public:
     // return la reponse
     const std::string &get_answer() const;
 
-    // return le booleen de présence d'image
-    bool isImage() const;
-    // return le nom de l'image
-    const std::string &get_image() const;
-    // return le chemin de l'image
-    const std::string &get_pathImage() const;
     
-    const bool &isImageVertical() const;
 
 private:
     std::string _question;
     std::vector<std::string> _propositions;
     std::string _answer;
 
-    std::string _image; // nom de l'image 
-    std::string _pathImage; // chemin de l'image
-    bool _isVertical; // 1 si l'image est vertical et 0 si horizontal
-    // un id de la question ?
+    
 };
