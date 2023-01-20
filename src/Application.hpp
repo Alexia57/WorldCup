@@ -11,7 +11,8 @@ class Application
 {
 private:
     sf::Font _font;
-    
+    sf::Texture _texture;
+    sf::Sprite _background;
 
     Application(sf::RenderWindow& window);
     

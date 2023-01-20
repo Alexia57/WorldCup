@@ -1,11 +1,20 @@
 #include <iostream> 
 #include "Application.hpp"
+#include "Useful.hpp"
 
 using namespace std;
 
 Application::Application(sf::RenderWindow& window)
 {
     _font.loadFromFile("assets/arial.ttf");
+    _texture.loadFromFile("../assets/images/background.png");
+    _texture.setSmooth(true);
+    _background.setTexture(_texture);
+
+    sf::Vector2f wSize(window.getSize().x,window.getSize().y);
+    sf::FloatRect Rect = _background.getLocalBounds();
+    float scale = Useful::max(wSize.x/Rect.height,wSize.y/Rect.width);
+    _background.setScale(scale,scale);
 }
 
 Application& Application::initialize(sf::RenderWindow& window)
@@ -40,6 +49,7 @@ Screen* Application::Update(sf::RenderWindow& window, Screen& currentScreen)
 
 void Application::Draw(sf::RenderWindow& window, Screen& currentScreen)
 {
+    window.draw(_background);
     currentScreen.Draw(window);
 }
 
