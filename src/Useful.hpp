@@ -7,7 +7,9 @@
 
 #include <cmath> //round
 #include <SFML/Graphics.hpp>
-#include <sys/stat.h>
+//#include <sys/stat.h>
+#include <fstream>
+#include <string>
 
 #include "Question.hpp"
 #include "../lib/pugixml/pugixml.hpp"
@@ -22,9 +24,14 @@ void parseXML(const std::string& fileName, std::list<Question> &questions);
 // Convertit un std::string codé en UTF8 en sf::String en UTF32
 sf::String UTF8_to_UTF32(std::string str);
 
-inline bool exists (const std::string& name) {
+/* inline bool exists (const std::string& name) {
   struct stat buffer;   
   return (stat (name.c_str(), &buffer) == 0); 
+} */
+
+inline bool exists (const std::string& name) {
+    std::ifstream f(name.c_str());
+    return f.good();
 }
 
 std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &pattern);

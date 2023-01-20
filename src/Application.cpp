@@ -7,13 +7,13 @@ using namespace std;
 Application::Application(sf::RenderWindow& window)
 {
     _font.loadFromFile("assets/arial.ttf");
-    _texture.loadFromFile("../assets/images/background.png");
+    _texture.loadFromFile("assets/images/background.png");
     _texture.setSmooth(true);
     _background.setTexture(_texture);
 
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
     sf::FloatRect Rect = _background.getLocalBounds();
-    float scale = Useful::max(wSize.x/Rect.height,wSize.y/Rect.width);
+    float scale = Useful::max(wSize.x/Rect.width,wSize.y/Rect.height);
     _background.setScale(scale,scale);
 }
 
