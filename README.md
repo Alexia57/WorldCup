@@ -1,19 +1,31 @@
 # WorldCup
 ## Introduction
-Ce repository est l'hébergement d'un projet effectué par Alexia Prevot et Bastien .....
+Ce repository est l'hébergement d'un projet effectué par Alexia Prevot et Bastien Guillemare.
 
 ## Objectifs
 Le but de ce projet est de créer un programme en C++ suivant le thème suivant : la coupe du monde. Il doit aussi répondre à certaines contraintes comme par exemple doit contenir au moins 8 classes.
 
 ## Organisation des dossiers
 
+Le dossier assets contient les resssources : images, questions et la police d'écriture pour la fenêtre
 
 ## Installation et lancement
 
-Dans un terminal Linux ou Windows :  
+Dans un terminal Linux :  
 ```
 git clone .....
-python ....
+```
+### compiler et lancer le projet
+```
+make 
+
+./projet
+```
+### compiler et lancer les tests unitaires
+```
+make testcase
+
+./testcase
 ```
 
 ## Dépendances
