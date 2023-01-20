@@ -1,6 +1,5 @@
 #include "Question.hpp"
 
-// constructeurs
 Question::Question(){}
 
 Question::Question(std::string question, std::vector<std::string> propositions, std::string answer)
@@ -16,8 +15,6 @@ Question::Question(std::string question, std::string p1, std::string p2, std::st
     this->_propositions = {p1, p2, p3, p4};
 }
 
-
-// fonctions
 const std::string &Question::get_question() const
 {
     return this->_question;
