@@ -7,6 +7,10 @@
 
 class Question
 {
+private:
+    std::string _question; // question
+    std::vector<std::string> _propositions; // vector of propositions
+    std::string _answer; // answer
 public:
     // constructors
     Question();
@@ -21,11 +25,4 @@ public:
     std::vector<std::string> &get_propositions();
     // return the answer
     const std::string &get_answer() const;
-
-    
-
-private:
-    std::string _question; // question
-    std::vector<std::string> _propositions; // vector of propositions
-    std::string _answer; // answer
 };
