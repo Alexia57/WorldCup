@@ -53,8 +53,10 @@ void Revision::RunSheet(sf::RenderWindow& window)
 {
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
+    // set the text for the revision sheet
     Useful::setTxt(_txtRevision, "Galop "+std::to_string(_galop)+" : Fiche n°"+std::to_string(_numSheet), *_font, 50, wSize.x/2, wSize.y/22, wSize);
 
+    // check if the 'previous' button should be displayed
     if(_numSheet > 1){
         _isPrevious = 1;
         _previous.turnOn();
@@ -63,6 +65,7 @@ void Revision::RunSheet(sf::RenderWindow& window)
         _previous.turnOff();
     }
     
+    // check if the 'next' button should be displayed
     if(_numSheet < _nSheet){
         _isNext = 1;
         _next.turnOn();
@@ -71,6 +74,7 @@ void Revision::RunSheet(sf::RenderWindow& window)
         _next.turnOff();
     }
 
+    // load the image for the current sheet if it has not been loaded yet
     if(_imgTexture[_numSheet-1].getSize() == sf::Vector2u(0,0)){
         //std::cout << "Load :" << _pathImg[_numSheet-1] << std::endl;
         std::string pathImg = "assets/images/imagesLecons/" + _pathImg[_numSheet-1];
@@ -78,6 +82,7 @@ void Revision::RunSheet(sf::RenderWindow& window)
         _imgTexture[_numSheet-1].setSmooth(true);
     }
     
+    // set the texture and position of the image sprite
     delete _imgSprite;
     _imgSprite = new sf::Sprite;
 
@@ -94,6 +99,7 @@ void Revision::RunSheet(sf::RenderWindow& window)
 
 void Revision::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 {   
+    // handle event for menu, previous and next buttons
     _menu.HandleEvent(event);
     _previous.HandleEvent(event);
     _next.HandleEvent(event);
@@ -101,33 +107,41 @@ void Revision::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 
 Screen* Revision::Update(sf::RenderWindow& window)
 {
+    // if menu button is hovered, create new menu screen and return it
     if(_menu.isHover()){
         Menu *screen = new Menu(window, _font);
         return screen;
     }
+    // if previous button is hovered, decrease the current sheet number and update the current sheet
     if(_previous.isHover()){
         _numSheet--;
         RunSheet(window);
     }
+    // if next button is hovered, increase the current sheet number and update the current sheet
     if(_next.isHover()){
         _numSheet++;
         RunSheet(window);
     }
-
+    // return the current screen
     return this;
 }
 
 void Revision::Draw(sf::RenderWindow& window)
 {
+    // draw the sheet number text
     window.draw(_txtRevision);
 
+    // draw the current sheet image
     window.draw(*_imgSprite);
 
+    // if there is a previous sheet, draw the previous button
     if(_isPrevious)
         _previous.Draw(window);
 
+    // draw the menu button
     _menu.Draw(window);
 
+    // if there is a next sheet, draw the next button
     if(_isNext)
         _next.Draw(window);
 }

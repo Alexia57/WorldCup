@@ -28,27 +28,36 @@ Quizz::~Quizz()
 
 void Quizz::RunQuestion(sf::RenderWindow& window)
 {
+    // Get the number of propositions for the current question
     _sizeProp = _questions.front().get_propositions().size();
+    // If the current question is not the first question, delete the previous propositions buttons
     if(_numQuestion != 1) { delete [] _buttonProp; }
+    // Create new buttons for the current question's propositions
     _buttonProp = new Button[_sizeProp];
 
+    //Get the size of the window
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
-    
+    // Create the path for the image associated with the current question
     std::string imgPath = "assets/images/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".png";
+    //Check if the image exists
     _isImg = exists(imgPath);
 
     if(_isImg){
         //std::cout << _imgTexture.getMaximumSize() << std::endl;
+        //Load the image and set it to be smooth
         _imgTexture.loadFromFile(imgPath);
         _imgTexture.setSmooth(true);
-        
+
+        //Delete the previous image sprite and create a new one with the current image
         delete _imgSprite;
         _imgSprite = new sf::Sprite;
         _imgSprite->setTexture(_imgTexture);
     }
 
+    //Calculate the number of lines needed to display the question and propositions
     int nLine = _sizeProp + 1;
+    //Create the text for the current question
     Useful::setTxt(_txtQuestion, _questions.front().get_question(), *_font, 60, wSize.x/2, wSize.y*0.5/(nLine+1), wSize);
     
     std::vector<std::string> *prop = &(_questions.front().get_propositions());
@@ -57,7 +66,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     
 
     if(_isImg == 0){
-        
+        // If there is no image, the buttons are positioned in the center of the screen
         sf::Vector2f size(wSize.x*0.65,wSize.y*0.65/(nLine+1));
 
         for(int i = 0; i < _sizeProp; i++){
@@ -66,6 +75,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
         }
 
     }else{
+        // else, the buttons are positioned to the right of the image
         float space = wSize.y*0.03;
 
         sf::FloatRect Rect = _imgSprite->getLocalBounds();
@@ -94,8 +104,10 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
     else
         txt = "Mauvaise réponse : la solution est \"" + _questions.front().get_answer() + "\"";
 
+    // set the text of the answer
     Useful::setTxt(_answer, txt, *_font, 40, wSize.x/2, wSize.y*(1.1)/(_sizeProp+2), wSize);
     
+    // create the next button
     sf::Vector2f size(wSize.x*0.14,wSize.y*0.45/6);
     sf::Vector2f pos(wSize.x*0.92, wSize.y*5.65/6);
     sf::Color    grey(150, 150, 150);
@@ -117,15 +129,18 @@ void Quizz::RunScore(sf::RenderWindow& window)
     std::string txt = "Score : " + std::to_string(_score) + " bonne(s) réponse(s) sur ";
     txt += std::to_string(_numQuestion) + " questions";
 
+    //set the text of the score
     Useful::setTxt(_txtQuestion, "RESULTAT", *_font, 60, wSize.x/2, wSize.y/8, wSize);
     Useful::setTxt(_txtScore, txt, *_font, 40, wSize.x/2, wSize.y*3/8, wSize);
 }
 
 void Quizz::HandleEvent(sf::RenderWindow& window,sf::Event &event)
 {   
+    //handle event for each proposition button
     for(int i = 0; i < _sizeProp; i++)
         _buttonProp[i].HandleEvent(event);
 
+    //handle event for next button if answer or score is shown
     if(_isAnswer || _isScore)
         _next.HandleEvent(event);
 }
