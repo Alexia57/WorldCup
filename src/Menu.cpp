@@ -10,7 +10,10 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
     window.setTitle("Menu");
-    Useful::setTxt(_menuText, "Menu", *font, 60, wSize.x/2, wSize.y/5, wSize);
+    Useful::setTxt(_menuText, "Direction Coupe du Monde !", *font, 60, wSize.x/2, wSize.y/5, wSize);
+    _menuText.setStyle(sf::Text::Bold);
+
+    Useful::setTxt(_introText, "Obtenez votre galop 7 en un rien de temps :)", *font, 40, wSize.x/2, wSize.y*3/10, wSize);
 
     sf::Vector2f size(250.f,100.f);
     sf::Vector2f position1(wSize.x/4.f, wSize.y*3/5.f);
@@ -55,6 +58,7 @@ Screen* Menu::Update(sf::RenderWindow& window)
 void Menu::Draw(sf::RenderWindow& window)
 {
     window.draw(_menuText);
+    window.draw(_introText);
     
     _option1.Draw(window);
     _option2.Draw(window);

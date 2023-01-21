@@ -8,6 +8,7 @@ class Menu : public Screen
 {
 private:
     sf::Text _menuText;
+    sf::Text _introText;
     Button _option1;
     Button _option2;
 
