@@ -11,7 +11,7 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     _numSheet = 1;
 
     std::string pathDir = "assets/images/imagesLecons/";
-    std::string format = "g" + std::to_string(_galop) + "_*.png";
+    std::string format = "g" + std::to_string(_galop) + "_*.jpg";
     _pathImg = getFileNames(pathDir, format);
 
     /* std::cout << "size : " << _pathImg.size() << std::endl;

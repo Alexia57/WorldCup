@@ -15,6 +15,9 @@ private:
     // Button object for the 2nd option
     Button _option2;
 
+    sf::Texture _texture;
+    sf::Sprite _sprite;
+
 public:
     // constructor
     Menu(sf::RenderWindow& window, sf::Font *font);

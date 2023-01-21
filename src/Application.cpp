@@ -8,8 +8,7 @@ Application::Application(sf::RenderWindow& window)
 {
     // Load font from file "assets/arial.ttf"
     _font.loadFromFile("assets/arial.ttf");
-    // Load texture from file "assets/images/background.png"
-    _texture.loadFromFile("assets/images/background.png");
+    _texture.loadFromFile("assets/images/background.jpg");
     // Enable texture smoothing
     _texture.setSmooth(true);
     _background.setTexture(_texture);

@@ -39,7 +39,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
     // Create the path for the image associated with the current question
-    std::string imgPath = "assets/images/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".png";
+    std::string imgPath = "assets/images/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".jpg";
     //Check if the image exists
     _isImg = exists(imgPath);
 
@@ -71,7 +71,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
 
         for(int i = 0; i < _sizeProp; i++){
             sf::Vector2f pos(wSize.x/2, wSize.y*(i+1.8)/(nLine+1));
-            _buttonProp[i].Setting(size, pos, grey, red, (*prop)[i], *_font);
+            _buttonProp[i].Setting(size, pos, (*prop)[i], *_font);
         }
 
     }else{
@@ -87,7 +87,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
 
         for(int i = 0; i < _sizeProp; i++){
             sf::Vector2f pos(wSize.x*3/4, wSize.y*(i+1.8)/(nLine+1) + space);
-            _buttonProp[i].Setting(size, pos, grey, red, (*prop)[i], *_font);
+            _buttonProp[i].Setting(size, pos, (*prop)[i], *_font);
         }
     }
 }
@@ -112,7 +112,7 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
     sf::Vector2f pos(wSize.x*0.92, wSize.y*5.65/6);
     sf::Color    grey(150, 150, 150);
     sf::Color    red(255, 100, 100);
-    _next.Setting(size, pos, grey, red, "Suivant", *_font);
+    _next.Setting(size, pos, "Suivant", *_font);
     _next.turnOn();
 }
 
@@ -151,11 +151,13 @@ Screen* Quizz::Update(sf::RenderWindow& window)
         for(int i = 0; i < _sizeProp; i++){
             if(_buttonProp[i].isHover()){
                 if(_questions.front().get_propositions()[i] == _questions.front().get_answer()){
-                    _buttonProp[i].setDefaultColor(sf::Color(100, 255, 100));
+                    std::string path = "assets/images/panneau_vert.jpg";
+                    _buttonProp[i].setDefaultTexture(path);
                     RunAnswer(window,1);
                     _score++;
                 }else{
-                    _buttonProp[i].setDefaultColor(sf::Color(255, 100, 100));
+                    std::string path = "assets/images/panneau_rouge.jpg";
+                    _buttonProp[i].setDefaultTexture(path);
                     RunAnswer(window,0);
                 }
 

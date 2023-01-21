@@ -14,25 +14,30 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     window.setTitle("Menu");
 
     // set the text for the main menu title
-    Useful::setTxt(_menuText, "Direction Coupe du Monde !", *font, 60, wSize.x/2, wSize.y/5, wSize);
+    Useful::setTxt(_menuText, "Direction Coupe du Monde !", *font, 44, wSize.x*0.49, wSize.y*1/6, wSize);
     _menuText.setStyle(sf::Text::Bold);
-    Useful::setTxt(_introText, "Obtenez votre galop 7 en un rien de temps :)", *font, 40, wSize.x/2, wSize.y*3/10, wSize);
+    Useful::setTxt(_introText, "Obtenez votre galop 7 en un rien de temps :)", *font, 29, wSize.x/2, wSize.y*3/12, wSize);
 
     // set the size and position of the buttons
     sf::Vector2f size(250.f,100.f);
-    sf::Vector2f position1(wSize.x/4.f, wSize.y*3/5.f);
-    sf::Vector2f position2(wSize.x*3/4.f, wSize.y*3/5.f);
+    sf::Vector2f position1(wSize.x/4.f, wSize.y*2/3.f);
+    sf::Vector2f position2(wSize.x*3/4.f, wSize.y*2/3.f);
     // set the default and hover colors for the buttons
-    sf::Color    grey(150, 150, 150);
-    sf::Color    red(255, 100, 100);
 
     // set the properties for the first button
-    _option1.Setting(size, position1, grey, red, "Révision", *font);
+    _option1.Setting(size, position1, "Révision", *font);
     // set the properties for the 2nd button
-    _option2.Setting(size, position2, grey, red, "QUIZZ", *font);
+    _option2.Setting(size, position2, "QUIZZ", *font);
 
     //Useful::setTxt(_option1, "Option 1", *font, 40, wSize.x/4, wSize.y*3/5);
     //Useful::setTxt(_option2, "Option 2", *font, 40, wSize.x*3/4, wSize.y*3/5);
+    _texture.loadFromFile("assets/images/pancarte.png");
+    _sprite.setTexture(_texture);
+    sf::FloatRect rect = _sprite.getLocalBounds();
+    sf::Vector2f pos(wSize.x/2, wSize.y/6);
+    _sprite.setScale(wSize.x*0.5/rect.width, wSize.y*0.35/rect.height);
+    _sprite.setOrigin(rect.left + rect.width / 2.0f, rect.top + rect.height / 2.0f);
+    _sprite.setPosition(pos);
 }
 
 Menu::~Menu()
@@ -67,6 +72,7 @@ Screen* Menu::Update(sf::RenderWindow& window)
 
 void Menu::Draw(sf::RenderWindow& window)
 {
+    window.draw(_sprite);
     // draw the menu title
     window.draw(_menuText);
     window.draw(_introText);

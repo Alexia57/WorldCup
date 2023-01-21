@@ -40,13 +40,15 @@ void printRect(sf::FloatRect rect);
 
 class Useful {
 public:
-    static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, sf::Vector2f &dimBox)
+    static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, 
+                       sf::Vector2f &dimBox, const sf::Color& color = sf::Color(200,160,160))
     {
         txt.setString(UTF8_to_UTF32(string));
         txt.setFont(font);
         txt.setCharacterSize(charSize);
         txt.setOrigin(round(txt.getGlobalBounds().width / 2.f), round(txt.getGlobalBounds().height / 2.f));
         txt.setPosition(sf::Vector2f(x,y));
+        txt.setFillColor(color);
 
         resizeTxt(txt, charSize, x, y, dimBox);
     }
