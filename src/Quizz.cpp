@@ -39,7 +39,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
 
     // Create the path for the image associated with the current question
-    std::string imgPath = "assets/images/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".jpg";
+    std::string imgPath = "assets/images/quizz/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".jpg";
     //Check if the image exists
     _isImg = exists(imgPath);
 
