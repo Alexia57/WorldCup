@@ -15,8 +15,8 @@
 #include "../lib/pugixml/pugixml.hpp"
 
 
-// compare si 2 listes sont identiques et return true si oui
-bool compare_lists(std::list<std::string> lst1, std::list<std::string> lst2);
+// compare si 2 vect<string> sont identiques et return true si oui
+bool isEqual_vectString(std::vector<std::string> vect1, std::vector<std::string> vect2);
 
 // fonction pour récupérer les données d'un fichier XML dans des variables de la classe Question
 void parseXML(const std::string& fileName, std::list<Question> &questions);

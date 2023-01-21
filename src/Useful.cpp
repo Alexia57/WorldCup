@@ -2,12 +2,12 @@
 #include <dirent.h>
 #include <fnmatch.h>
 
-// compare si 2 listes sont identiques et return true si oui
-bool compare_lists(std::list<std::string> lst1, std::list<std::string> lst2){
-    if(lst1.size() != lst2.size()) return false;
-    auto it1 = lst1.begin();
-    auto it2 = lst2.begin();
-    for(; it1 != lst1.end(); it1++, it2++){
+// compare si 2 vect<string> sont identiques et return true si oui
+bool isEqual_vectString(std::vector<std::string> vect1, std::vector<std::string> vect2){
+    if(vect1.size() != vect2.size()) return false;
+
+    std::vector<std::string>::const_iterator it1, it2; 
+    for(it1 = vect1.begin(), it2 = vect2.begin(); it1 != vect1.end(); it1++, it2++){
         if(*it1 != *it2) return false;
     }
     return true;

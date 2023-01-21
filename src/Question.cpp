@@ -30,4 +30,18 @@ const std::string &Question::get_answer() const
     return this->_answer;
 }
 
+Question &Question::operator+(std::string proposition){
+    this->_propositions.push_back(proposition);
+    return *this;
+}
 
+std::ostream& operator<<(std::ostream& os, const Question& question)
+{
+    os << "Question : " << question.get_question() << std::endl;
+    os << "Proposition :" << std::endl;
+    for(std::vector<std::string>::const_iterator it = question._propositions.begin(); it != question._propositions.end(); it++){
+        os << (*it) << std::endl;
+    }
+    os << "Réponse : " << question.get_answer() << std::endl;
+    return os;
+}

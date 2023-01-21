@@ -14,9 +14,6 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     std::string format = "g" + std::to_string(_galop) + "_*.jpg";
     _pathImg = getFileNames(pathDir, format);
 
-    /* std::cout << "size : " << _pathImg.size() << std::endl;
-    for(auto it =_pathImg.begin(); it!=_pathImg.end(); it++)
-        std::cout << (*it) << std::endl; */
     
     _nSheet = _pathImg.size();
     _imgTexture = new sf::Texture[_nSheet];
@@ -28,15 +25,15 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     sf::Color    red(255, 100, 100);
     sf::Vector2f sizeMenu(wSize.x*0.09, wSize.y/12);
     sf::Vector2f posMenu(wSize.x*0.06, wSize.y*0.4/6);
-    _menu.Setting(sizeMenu, posMenu, grey, red, "Menu", *_font);
+    _menu.Setting(sizeMenu, posMenu, "Menu", *_font);
 
     sf::Vector2f sizePrev(wSize.x*0.14, wSize.y/12);
     sf::Vector2f posPrev(wSize.x*0.08, wSize.y*5.7/6);
-    _previous.Setting(sizePrev, posPrev, grey, red, "Précédent", *_font);
+    _previous.Setting(sizePrev, posPrev, "Précédent", *_font);
 
     sf::Vector2f sizeNext(wSize.x*0.14, wSize.y/12);
     sf::Vector2f posNext(wSize.x*0.92, wSize.y*5.7/6);
-    _next.Setting(sizeNext, posNext, grey, red, "Suivant", *_font);
+    _next.Setting(sizeNext, posNext, "Suivant", *_font);
 
     _imgSprite = new sf::Sprite;
 
