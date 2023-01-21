@@ -54,4 +54,19 @@
         <proposition>Grand Sésamoïde</proposition>
         <reponse>Carpe</reponse>
     </question>
+    <question>
+        <text>Quelle catégorie de muscle n'existe pas?</text>
+        <proposition>Releveur</proposition>
+        <proposition>Pivoteur</proposition>
+        <proposition>Abducteur</proposition>
+        <proposition>Adducteur</proposition>
+        <reponse>Pivoteur</reponse>
+    </question>
+    <question>
+        <text>Quel est le bon ordre?</text>
+        <proposition>eau-foin-aliment concentré</proposition>
+        <proposition>foin-eau-aliment concentré</proposition>
+        <proposition>foin-aliment concentré- eau</proposition>
+        <reponse>eau-foin-aliment concentré</reponse>
+    </question>
 </questions>

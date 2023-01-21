@@ -61,4 +61,24 @@
         <proposition>Chambon</proposition>
         <reponse>Pessoa</reponse>
     </question>
+    <question>
+        <text>Si le cavalier est majeur, il peut directement passer du galop 4 au 7.</text>
+        <proposition>Vrai</proposition>
+        <proposition>Faux</proposition>
+        <reponse>Vrai</reponse>
+    </question>
+    <question>
+        <text>Si le cavalier est majeur, il peut directement passer du galop 4 au 7.</text>
+        <proposition>Vrai</proposition>
+        <proposition>Faux</proposition>
+        <reponse>Vrai</reponse>
+    </question>
+    <question>
+        <text>Mon cheval a tendance à beaucoup lever la tête, lequel de ces enrênements serait ?</text>
+        <proposition>Martingale</proposition>
+        <proposition>Gogue</proposition>
+        <proposition>Pessoa</proposition>
+        <proposition>Chambon</proposition>
+        <reponse>Pessoa</reponse>
+    </question>
 </questions>

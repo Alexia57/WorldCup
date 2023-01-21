@@ -45,4 +45,26 @@
         <proposition>Q</proposition>
         <reponse>B</reponse>
     </question>
+    <question>
+        <text>Quel est le nom du mors n°4?</text>
+        <proposition>Barette</proposition>
+        <proposition>Aiguille</proposition>
+        <proposition>Pincette</proposition>
+        <proposition>Papillon</proposition>
+        <reponse>Aiguille</reponse>
+    </question>
+    <question>
+        <text>Qu'est ce que protège une "cloche"?</text>
+        <proposition>Un glôme</proposition>
+        <proposition>Un antérieur</proposition>
+        <proposition>Un postérieur</proposition>
+        <proposition>Le ventre du cheval</proposition>
+        <reponse>Un glôme</reponse>
+    </question>
+    <question>
+        <text>Il est possible de partir au galop du pas.</text>
+        <proposition>Vrai</proposition>
+        <proposition>Faux</proposition>
+        <reponse>Vrai</reponse>
+    </question>
 </questions>

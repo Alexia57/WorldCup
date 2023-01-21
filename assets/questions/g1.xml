@@ -53,4 +53,19 @@
         <proposition>Polo</proposition>
         <reponse>CSO</reponse>
     </question>
+    <question>
+        <text>Quel est le nom de la partie n°5 de la selle?</text>
+        <proposition>Petit Quartier</proposition>
+        <proposition>Taquet</proposition>
+        <proposition>Ettrivière</proposition>
+        <proposition>Matelassure</proposition>
+        <reponse>Taquet</reponse>
+    </question>
+    <question>
+        <text>Où se situe le chanfrein du cheval?</text>
+        <proposition>Avant-main</proposition>
+        <proposition>Corps</proposition>
+        <proposition>Arrière-main</proposition>
+        <reponse>Garrot</reponse>
+    </question>
 </questions>

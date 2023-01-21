@@ -53,4 +53,17 @@
         <proposition>Couronne</proposition>
         <reponse>Couronne</reponse>
     </question>
+    <question>
+        <text>Mon équidé adulte mesure d’1m54 au garrot, il s'agit</text>
+        <proposition>d'un cheval</proposition>
+        <proposition>d'un poney</proposition>
+        <reponse>d'un cheval</reponse>
+    </question>
+    <question>
+        <text>Vous avez votre galop 2, à quelle épreuve de cso pouvez vous participer ?</text>
+        <proposition>Club 1</proposition>
+        <proposition>Club 2</proposition>
+        <proposition>Club 3</proposition>
+        <reponse>Club 3 </reponse>
+    </question>
 </questions>

@@ -52,4 +52,20 @@
         <proposition>Les mains</proposition>
         <reponse>L'éperon</reponse>
     </question>
+    <question>
+        <text>Pour avoir le galop 3, quelle hauteur faut-il savoir sauter?</text>
+        <proposition>40 cm</proposition>
+        <proposition>50 cm</proposition>
+        <proposition>60 cm</proposition>
+        <proposition>70 cm</proposition>
+        <reponse>L'éperon</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°9 de la tête du cheval?</text>
+        <proposition>Auge</proposition>
+        <proposition>Apophyse zygomatique</proposition>
+        <proposition>Naseaux</proposition>
+        <proposition>Joue</proposition>
+        <reponse>Apophyse zygomatique</reponse>
+    </question>
 </questions>

@@ -56,4 +56,18 @@
         <proposition>Plaqué</proposition>
         <reponse>Enfermé</reponse>
     </question>
+    <question>
+        <text>Vous avez votre galop 6, pouvez vous participer à une épreuve de cso club élite?</text>
+        <proposition>Oui</proposition>
+        <proposition>Non</proposition>
+        <reponse>Oui</reponse>
+    </question>
+    <question>
+        <text>Quel est le nom de la partie n°2 du fer du cheval?</text>
+        <proposition>Eponge</proposition>
+        <proposition>Contre-perçure</proposition>
+        <proposition>Mamelle</proposition>
+        <proposition>Pince</proposition>
+        <reponse>Pince</reponse>
+    </question>
 </questions>
