@@ -41,7 +41,7 @@ void printRect(sf::FloatRect rect);
 class Useful {
 public:
     static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, 
-                       sf::Vector2f &dimBox, const sf::Color& color = sf::Color(200,160,160))
+                       sf::Vector2f &dimBox, const sf::Color& color = sf::Color(200,180,180))
     {
         txt.setString(UTF8_to_UTF32(string));
         txt.setFont(font);
