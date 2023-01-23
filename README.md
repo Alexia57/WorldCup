@@ -11,9 +11,10 @@ Le dossier assets contient les resssources : images, questions et la police d'é
 
 ## Installation et lancement
 
-L'application utilise les librairie SMFL et GNU, disponibles ici :
-https://www.sfml-dev.org/
-https://www.gnu.org/
+La bibliothèque suivante est nécessaire au fonctionnement du programme :
+- la bibliothèque graphique SFML : https://www.sfml-dev.org/
+- la bibliothèque GNU : https://www.gnu.org/
+
 
 
 Dans un terminal Linux :  
@@ -38,12 +39,5 @@ ou
 make checkout
 ```
 
-## Dépendances
-
-La bibliothèque suivante est nécessaire au fonctionnement du programme :
-* gtkmm (pour créer des interfaces graphiques en programmant en C++ avec la programmation orientée objet). Son installation se fait sur linux avec la commande : 
-```
-sudo apt-get install libgtkmm-4.0-dev
-```
 
 
