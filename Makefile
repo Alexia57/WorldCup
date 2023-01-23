@@ -1,6 +1,6 @@
 CC=g++
 CCFLAGS= -Wall -Werror -std=c++11 -g 
-LIBS = -I lib/pugixml/ -lsfml-graphics -lsfml-window -lsfml-system
+LIBS =  -lsfml-graphics -lsfml-window -lsfml-system
 LIBFLAGS= -L lib/pugixml/ -lpugixml 
 SRC= $(wildcard src/*.cpp) lib/pugixml/pugixml.cpp
 OBJ= $(SRC:.cpp=.o)
@@ -15,7 +15,7 @@ all: $(EXEC)
 testcase : 
 	cd $(TST_DIR) ;  make
 
-test : testcase
+checkout : testcase
 	cd $(TST_DIR); ./testcase
 
 $(EXEC): $(OBJ)
@@ -23,11 +23,6 @@ $(EXEC): $(OBJ)
 
 %.o: %.cpp
 	$(CC) $(CCFLAGS) -o $@ -c $< $(LIBS)
-
-# Unused
-#.depends:
-#	g++ $(CCFLAGS) -MM $(SRC) > .depends
-#-include .depends
 
 clean:
 	rm -f $(OBJ) $(EXEC)
