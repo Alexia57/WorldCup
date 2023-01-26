@@ -26,6 +26,25 @@ Quizz::~Quizz()
     delete [] _buttonProp;
 }
 
+void Quizz::ResetImg (std::string imgPath)
+{
+    //Check if the image exists
+    _isImg = exists(imgPath);
+
+    if(_isImg){
+        //Load the image and set it to be smooth
+        _imgTexture.loadFromFile(imgPath);
+        _imgTexture.setSmooth(true);
+
+        //Delete the previous image sprite and create a new one with the current image
+        delete _imgSprite;
+        _imgSprite = new sf::Sprite;
+        _imgSprite->setTexture(_imgTexture);
+    }else{
+        std::cout << imgPath << std::endl;
+    }
+}
+
 void Quizz::RunQuestion(sf::RenderWindow& window)
 {
     // Get the number of propositions for the current question
@@ -40,19 +59,7 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
 
     // Create the path for the image associated with the current question
     std::string imgPath = "assets/images/quizz/q" + std::to_string(_galop) + std::to_string(_numQuestion) + ".jpg";
-    //Check if the image exists
-    _isImg = exists(imgPath);
-
-    if(_isImg){
-        //Load the image and set it to be smooth
-        _imgTexture.loadFromFile(imgPath);
-        _imgTexture.setSmooth(true);
-
-        //Delete the previous image sprite and create a new one with the current image
-        delete _imgSprite;
-        _imgSprite = new sf::Sprite;
-        _imgSprite->setTexture(_imgTexture);
-    }
+    ResetImg(imgPath);
 
     //Calculate the number of lines needed to display the question and propositions
     int nLine = _sizeProp + 1;
@@ -60,9 +67,6 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     Useful::setTxt(_txtQuestion, _questions.front().get_question(), *_font, 60, wSize.x/2, wSize.y*0.5/(nLine+1), wSize);
     
     std::vector<std::string> *prop = &(_questions.front().get_propositions());
-    sf::Color    grey(150, 150, 150);
-    sf::Color    red(255, 100, 100);
-    
 
     if(_isImg == 0){
         // If there is no image, the buttons are positioned in the center of the screen
@@ -108,8 +112,6 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
     // create the next button
     sf::Vector2f size(wSize.x*0.14,wSize.y*0.45/6);
     sf::Vector2f pos(wSize.x*0.92, wSize.y*5.65/6);
-    sf::Color    grey(150, 150, 150);
-    sf::Color    red(255, 100, 100);
     _next.Setting(size, pos, "Suivant", *_font);
     _next.turnOn();
 }
@@ -117,7 +119,6 @@ void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
 void Quizz::RunScore(sf::RenderWindow& window)
 {
     _isScore = 1;
-    _isImg = 0;
 
     //reset
     _next.turnOff();
@@ -129,7 +130,17 @@ void Quizz::RunScore(sf::RenderWindow& window)
 
     //set the text of the score
     Useful::setTxt(_txtQuestion, "RESULTAT", *_font, 60, wSize.x/2, wSize.y/8, wSize);
-    Useful::setTxt(_txtScore, txt, *_font, 40, wSize.x/2, wSize.y*3/8, wSize);
+    Useful::setTxt(_txtScore, txt, *_font, 40, wSize.x/2, wSize.y*2/8, wSize);
+
+    std::string imgPath = "assets/images/quizz/";
+    imgPath += (_score < _numQuestion/2) ? "bad_job.png" : "good_job.png";
+    ResetImg(imgPath);
+
+    sf::FloatRect Rect = _imgSprite->getLocalBounds();
+    float scale = Useful::min(wSize.y*0.60/Rect.height,wSize.x*0.45/Rect.width);
+    _imgSprite->setScale(scale, scale);
+    _imgSprite->setOrigin(Rect.left + Rect.width / 2.0f, Rect.top + Rect.height / 2.0f);
+    _imgSprite->setPosition(wSize.x/2, wSize.y*5/8);
 }
 
 void Quizz::HandleEvent(sf::RenderWindow& window,sf::Event &event)

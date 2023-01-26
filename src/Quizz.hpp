@@ -50,6 +50,8 @@ public:
     // Destructor
     ~Quizz() override;
 
+    // Reset texture and sprite
+    void ResetImg(std::string pathImg);
     // Runs the current question
     void RunQuestion(sf::RenderWindow& window);
     // Check buttons & call answer display
