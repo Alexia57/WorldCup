@@ -9,7 +9,6 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
 {
     // get the size of the window
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
-
     // set the title of the window to "Menu"
     window.setTitle("Menu");
 
@@ -22,15 +21,12 @@ Menu::Menu(sf::RenderWindow& window, sf::Font *font) : Screen(font)
     sf::Vector2f size(250.f,100.f);
     sf::Vector2f position1(wSize.x/4.f, wSize.y*2/3.f);
     sf::Vector2f position2(wSize.x*3/4.f, wSize.y*2/3.f);
-    // set the default and hover colors for the buttons
 
-    // set the properties for the first button
+    // set the properties for the buttons
     _option1.Setting(size, position1, "Révision", *font);
-    // set the properties for the 2nd button
     _option2.Setting(size, position2, "QUIZZ", *font);
 
-    //Useful::setTxt(_option1, "Option 1", *font, 40, wSize.x/4, wSize.y*3/5);
-    //Useful::setTxt(_option2, "Option 2", *font, 40, wSize.x*3/4, wSize.y*3/5);
+    // set a sprite for the text
     _texture.loadFromFile("assets/images/pancarte.png");
     _sprite.setTexture(_texture);
     sf::FloatRect rect = _sprite.getLocalBounds();
@@ -72,8 +68,8 @@ Screen* Menu::Update(sf::RenderWindow& window)
 
 void Menu::Draw(sf::RenderWindow& window)
 {
-    window.draw(_sprite);
     // draw the menu title
+    window.draw(_sprite);
     window.draw(_menuText);
     window.draw(_introText);
     

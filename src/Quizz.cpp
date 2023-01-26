@@ -44,7 +44,6 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
     _isImg = exists(imgPath);
 
     if(_isImg){
-        //std::cout << _imgTexture.getMaximumSize() << std::endl;
         //Load the image and set it to be smooth
         _imgTexture.loadFromFile(imgPath);
         _imgTexture.setSmooth(true);
@@ -95,10 +94,9 @@ void Quizz::RunQuestion(sf::RenderWindow& window)
 void Quizz::RunAnswer(sf::RenderWindow& window, bool goodAnswer)
 {
     _isAnswer = 1;
-
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
-    std::string txt;
 
+    std::string txt;
     if(goodAnswer)
         txt = "Bravo !";
     else
@@ -145,28 +143,35 @@ void Quizz::HandleEvent(sf::RenderWindow& window,sf::Event &event)
         _next.HandleEvent(event);
 }
 
+void Quizz::CheckAnswer(sf::RenderWindow& window)
+{
+    // if a button is hover => RunAnswer
+    for(int i = 0; i < _sizeProp; i++){ 
+        if(_buttonProp[i].isHover()){
+            if(_questions.front().get_propositions()[i] == _questions.front().get_answer()){
+                std::string path = "assets/images/panneau_vert.jpg";
+                _buttonProp[i].setDefaultTexture(path);
+                RunAnswer(window,1);
+                _score++;
+            }else{
+                std::string path = "assets/images/panneau_rouge.jpg";
+                _buttonProp[i].setDefaultTexture(path);
+                RunAnswer(window,0);
+            }
+
+            for(int j = 0; j < _sizeProp; j++)
+                _buttonProp[j].turnOff();
+
+            break;
+        }       
+    }
+}
+
 Screen* Quizz::Update(sf::RenderWindow& window)
 {
     if(_isAnswer == false && _isScore == false){
-        for(int i = 0; i < _sizeProp; i++){
-            if(_buttonProp[i].isHover()){
-                if(_questions.front().get_propositions()[i] == _questions.front().get_answer()){
-                    std::string path = "assets/images/panneau_vert.jpg";
-                    _buttonProp[i].setDefaultTexture(path);
-                    RunAnswer(window,1);
-                    _score++;
-                }else{
-                    std::string path = "assets/images/panneau_rouge.jpg";
-                    _buttonProp[i].setDefaultTexture(path);
-                    RunAnswer(window,0);
-                }
+        CheckAnswer(window);
 
-                for(int j = 0; j < _sizeProp; j++)
-                    _buttonProp[j].turnOff();
-
-                break;
-            }       
-        }
     }else if(_isAnswer){
 
         if(_next.isHover()){
@@ -181,15 +186,14 @@ Screen* Quizz::Update(sf::RenderWindow& window)
                 RunScore(window);
             }
         }
+        
     }else if(_isScore){
 
         if(_next.isHover()){
             Menu *screen = new Menu(window, _font);
             return screen;
-        }
-        
+        } 
     }
-
     return this;
 }
 

@@ -7,16 +7,15 @@
 class Menu : public Screen
 {
 private:
-    // Text object to display the menu title
+    // Object to display the menu title
     sf::Text _menuText;
     sf::Text _introText;
-    // Button object for the first option
-    Button _option1;
-    // Button object for the 2nd option
-    Button _option2;
-
     sf::Texture _texture;
     sf::Sprite _sprite;
+
+    // Button object for the options
+    Button _option1;
+    Button _option2;
 
 public:
     // constructor

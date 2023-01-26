@@ -15,13 +15,13 @@
 #include "../lib/pugixml/pugixml.hpp"
 
 
-// compare si 2 vect<string> sont identiques et return true si oui
+// This function compares two vectors of strings and returns true if they are identical
 bool isEqual_vectString(std::vector<std::string> vect1, std::vector<std::string> vect2);
 
-// fonction pour récupérer les données d'un fichier XML dans des variables de la classe Question
+// This function retrieves data from an XML file and stores it in variables of the Question class
 void parseXML(const std::string& fileName, std::list<Question> &questions);
 
-// Convertit un std::string codé en UTF8 en sf::String en UTF32
+// This function converts a string encoded in UTF8 to an sf::String encoded in UTF32
 sf::String UTF8_to_UTF32(std::string str);
 
 /* inline bool exists (const std::string& name) {
@@ -29,17 +29,21 @@ sf::String UTF8_to_UTF32(std::string str);
   return (stat (name.c_str(), &buffer) == 0); 
 } */
 
+// this function check if a file with the given name exist.
 inline bool exists (const std::string& name) {
     std::ifstream f(name.c_str());
     return f.good();
 }
 
+//  function that returns a vector of strings containing the names of files in a directory that match a specific pattern.
 std::vector<std::string> getFileNames(const std::string &pathDir, const std::string &pattern);
 
+// function that prints the properties of an SFML FloatRect object.
 void printRect(sf::FloatRect rect);
 
 class Useful {
 public:
+    // This function sets various properties of an SFML Text object, such as its string, font, character size, position, and color.
     static void setTxt(sf::Text& txt, std::string string, sf::Font& font, int charSize, int x, int y, 
                        sf::Vector2f &dimBox, const sf::Color& color = sf::Color(200,180,180))
     {
@@ -53,6 +57,7 @@ public:
         resizeTxt(txt, charSize, x, y, dimBox);
     }
 
+    // This function resizes an SFML Text object until it fits within a specified box.
     static void resizeTxt(sf::Text& txt, int charSize, int x, int y,sf::Vector2f &dimBox)
     {
         sf::FloatRect txtRect = txt.getGlobalBounds();
@@ -69,10 +74,12 @@ public:
         }
     }
 
+    // Return min of a & b
     static float min(float a, float b){
         return (a < b)? a : b;
     }
 
+    // Return max of a & b
     static float max(float a, float b){
         return (a > b)? a : b;
     }

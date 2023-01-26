@@ -13,7 +13,6 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     std::string pathDir = "assets/images/imagesLecons/";
     std::string format = "g" + std::to_string(_galop) + "_*.jpg";
     _pathImg = getFileNames(pathDir, format);
-
     
     _nSheet = _pathImg.size();
     _imgTexture = new sf::Texture[_nSheet];
@@ -21,8 +20,6 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     window.setTitle("Revision");
 
     sf::Vector2f wSize(window.getSize().x,window.getSize().y);
-    sf::Color    grey(150, 150, 150);
-    sf::Color    red(255, 100, 100);
     sf::Vector2f sizeMenu(wSize.x*0.09, wSize.y/12);
     sf::Vector2f posMenu(wSize.x*0.06, wSize.y*0.4/6);
     _menu.Setting(sizeMenu, posMenu, "Menu", *_font);
@@ -36,7 +33,6 @@ Revision::Revision(sf::RenderWindow& window, sf::Font *font, int galop) : Screen
     _next.Setting(sizeNext, posNext, "Suivant", *_font);
 
     _imgSprite = new sf::Sprite;
-
     RunSheet(window);
 }
 
@@ -82,8 +78,6 @@ void Revision::RunSheet(sf::RenderWindow& window)
     // set the texture and position of the image sprite
     delete _imgSprite;
     _imgSprite = new sf::Sprite;
-
-    
     _imgSprite->setTexture(_imgTexture[_numSheet-1]);
     
     sf::FloatRect Rect = _imgSprite->getLocalBounds();
@@ -91,7 +85,6 @@ void Revision::RunSheet(sf::RenderWindow& window)
     _imgSprite->setScale(scale, scale);
     _imgSprite->setOrigin(Rect.left + Rect.width / 2.0f, Rect.top + Rect.height / 2.0f);
     _imgSprite->setPosition(wSize.x/2, wSize.y*0.50);
-    
 }
 
 void Revision::HandleEvent(sf::RenderWindow& window,sf::Event &event)

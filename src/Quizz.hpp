@@ -52,6 +52,8 @@ public:
 
     // Runs the current question
     void RunQuestion(sf::RenderWindow& window);
+    // Check buttons & call answer display
+    void CheckAnswer(sf::RenderWindow& window);
     // Runs the answer for the current question
     void RunAnswer(sf::RenderWindow& window, bool goodAnswer);
     // Runs the score display

@@ -2,6 +2,28 @@
 #include "Button.hpp"
 #include "Useful.hpp"
 
+void Button::ResizeTxt(const sf::Vector2f& position)
+{
+    // Resize txt in box
+    int charSize = _text.getCharacterSize();
+    sf::FloatRect textRect = _text.getGlobalBounds();
+    sf::FloatRect shapeRect = (_imgVersion)? _sprite.getGlobalBounds() : _shape.getGlobalBounds();
+    shapeRect.left += shapeRect.width*0.05;
+    shapeRect.width *= 0.90;
+
+    // Reduce text size until it fits in the button
+    while(!shapeRect.contains(textRect.left,textRect.top)){
+        charSize -= 3;
+        if(charSize < 10)
+            break;
+        
+        _text.setCharacterSize(charSize);
+        textRect = _text.getLocalBounds();
+        _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        _text.setPosition(position.x, position.y);
+        textRect = _text.getGlobalBounds();
+    }
+}
 
 void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color, 
     const sf::Color& hoverColor, const std::string& text, const sf::Font& font)
@@ -31,24 +53,7 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
     _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     _text.setPosition(position.x, position.y);
 
-    // Resize txt in box
-    int charSize = _text.getCharacterSize();
-    shapeRect = _shape.getGlobalBounds();
-    shapeRect.left += shapeRect.width*0.05;
-    shapeRect.width *= 0.90;
-    textRect = _text.getGlobalBounds();
-    // Reduce text size until it fits in the button
-    while(!shapeRect.contains(textRect.left,textRect.top)){
-        charSize -= 3;
-        if(charSize < 10)
-            break;
-        
-        _text.setCharacterSize(charSize);
-        textRect = _text.getLocalBounds();
-        _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-        _text.setPosition(position.x, position.y);
-        textRect = _text.getGlobalBounds();
-    }
+    ResizeTxt(position);
 }
 
 
@@ -79,40 +84,26 @@ void Button::Setting(const sf::Vector2f& size, const sf::Vector2f& position, con
     _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     _text.setPosition(position.x, position.y);
 
-    // Resize txt in box
-    int charSize = _text.getCharacterSize();
-    Rect = _sprite.getGlobalBounds();
-    Rect.left += Rect.width*0.05;
-    Rect.width *= 0.90;
-    textRect = _text.getGlobalBounds();
-    // Reduce text size until it fits in the button
-    while(!Rect.contains(textRect.left,textRect.top)){
-        charSize -= 3;
-        if(charSize < 10)
-            break;
-        
-        _text.setCharacterSize(charSize);
-        textRect = _text.getLocalBounds();
-        _text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-        _text.setPosition(position.x, position.y);
-        textRect = _text.getGlobalBounds();
-    }
+    ResizeTxt(position);
 }
 
 
-void Button::setDefaultColor(const sf::Color& color){
+void Button::setDefaultColor(const sf::Color& color)
+{
     // set the default color of the button
     _defaultColor = color;
     _shape.setFillColor(color);
 }
 
-void Button::setDefaultTexture(std::string& texture){
+void Button::setDefaultTexture(std::string& texture)
+{
     // set the default color of the button
     _defaultTexture.loadFromFile(texture);
     _sprite.setTexture(_defaultTexture);
 }
 
-void Button::turnOff(){
+void Button::turnOff()
+{
     // deactivate the button
     _isActive = false;
     _isHover = false;
@@ -122,14 +113,15 @@ void Button::turnOff(){
         _shape.setFillColor(_defaultColor);
 }
 
-void Button::turnOn(){
+void Button::turnOn()
+{
     // activate the button
     _isActive = true;
     _isHover = false;
 }
 
-void Button::HandleEvent(sf::Event event) {
-
+void Button::HandleEvent(sf::Event event) 
+{
     if(_isActive) {
         if (event.type == sf::Event::MouseMoved) {
             // if the mouse is hovering over the button, change the color to the hover color
@@ -148,7 +140,6 @@ void Button::HandleEvent(sf::Event event) {
 
         } else if (event.type == sf::Event::MouseButtonPressed) {
             if (event.mouseButton.button == sf::Mouse::Left) {
-
                 // if the button is clicked, set _isHover to true
                 if(_imgVersion){
                     if (_sprite.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
@@ -156,8 +147,7 @@ void Button::HandleEvent(sf::Event event) {
                 }else{
                     if (_shape.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         _isHover = true;
-                }   
-                
+                }           
             }
         }
     }

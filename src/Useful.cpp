@@ -2,7 +2,7 @@
 #include <dirent.h>
 #include <fnmatch.h>
 
-// compare si 2 vect<string> sont identiques et return true si oui
+
 bool isEqual_vectString(std::vector<std::string> vect1, std::vector<std::string> vect2){
     if(vect1.size() != vect2.size()) return false;
 
@@ -30,7 +30,6 @@ std::vector<std::string> getFileNames(const std::string &pathDir, const std::str
     return files;
 }
 
-// fonction pour récupérer les données d'un fichier XML dans des variables de la classe Question
 void parseXML(const std::string& fileName, std::list<Question> &questions) {
 
     pugi::xml_document doc;

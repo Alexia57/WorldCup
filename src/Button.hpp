@@ -17,10 +17,13 @@ private:
     bool _isHover = false;
     // whether the button is currently active
     bool _isActive = true;
-
+    // whether the texture of the button is an image or a sf::Color
     bool _imgVersion;
+    // default texture of the button
     sf::Texture _defaultTexture;
+    // texture of the button when hovered over
     sf::Texture _hoverTexture;
+    // sprite of the button
     sf::Sprite _sprite;
 
 public:
@@ -34,6 +37,8 @@ public:
     void Setting(const sf::Vector2f& size, const sf::Vector2f& position, const std::string& text, 
             const sf::Font& font, const std::string& texture = "assets/images/panneau.jpg", 
             const std::string& textureHover = "assets/images/panneau_hover.jpg");
+    // Reduce text size until it fits in the button
+    void ResizeTxt(const sf::Vector2f& position);
     // set the default color of the button
     void setDefaultColor(const sf::Color& color);
     // set the default texture of the button

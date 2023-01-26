@@ -13,8 +13,6 @@ SelectGalop::SelectGalop(sf::RenderWindow& window, sf::Font *font, int option) :
     Useful::setTxt(_Title, "Sélection du Galop à tester :", *font, 60, wSize.x/2, wSize.y/7, wSize);
 
     sf::Vector2f size(200.f,80.f);
-    /* sf::Color    grey(150, 150, 150);
-    sf::Color    red(255, 100, 100); */
 
     for(int row = 0; row < 2; row++){
         for(int col = 0; col < 3; col++){
